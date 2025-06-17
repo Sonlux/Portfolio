@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Award, Trophy, Certificate } from 'lucide-react';
+import { Award, Trophy } from 'lucide-react';
 
 const Achievements = () => {
   const certifications = [
@@ -60,7 +60,7 @@ const Achievements = () => {
           <Card className="hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
             <CardHeader className="text-center pb-4">
               <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Certificate className="w-8 h-8 text-white" />
+                <Award className="w-8 h-8 text-white" />
               </div>
               <CardTitle className="text-xl font-bold text-gray-900">Certifications</CardTitle>
             </CardHeader>
