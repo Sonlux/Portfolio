@@ -24,7 +24,70 @@ const Projects = () => {
       ],
       achievements: "🏆 Top 5 Finalist at Guidewire DevTrails 2025",
       gradient: "from-blue-600 to-purple-600",
-      category: "AI/ML & Cloud"
+      category: "AI/ML & Cloud",
+      githubUrl: "https://github.com/Sonlux/K8S-Anomaly-Detection-and-Remediation",
+      hasDemo: true
+    },
+    {
+      title: "TRADEO - Stock Market Prediction & Trading Platform",
+      shortDescription: "Comprehensive stock market prediction platform combining ML models with real-time analysis.",
+      fullDescription: "A comprehensive stock market prediction and trading platform that combines machine learning models with real-time market data analysis. Features Flask backend API with various ML models for market prediction, interactive dashboard, and trading signals generation.",
+      technologies: ["Flask", "TensorFlow", "PyTorch", "XGBoost", "Pandas", "NumPy", "Scikit-learn", "Alpha Vantage API"],
+      highlights: [
+        "Real-time stock data analysis and visualization",
+        "Multiple ML models for price predictions (LSTM, GRU, XGBoost)",
+        "RESTful API endpoints for stock data integration",
+        "Interactive dashboard with historical data visualization",
+        "Trading signals generation with confidence metrics",
+        "Alpha Vantage and Yahoo Finance API integration",
+        "Flask-CORS enabled for cross-origin requests"
+      ],
+      achievements: "📈 Advanced ML-powered trading platform",
+      gradient: "from-green-600 to-emerald-600",
+      category: "AI/ML & Finance",
+      githubUrl: "https://github.com/Sonlux/TRADEO",
+      hasDemo: true
+    },
+    {
+      title: "AstroVerse - Interactive 3D Astronomy Platform",
+      shortDescription: "Real-time, interactive astronomy web platform for space enthusiasts and researchers.",
+      fullDescription: "AstroVerse is an ambitious, real-time, and interactive astronomy web platform designed for space enthusiasts, students, educators, and researchers. Features 3D universe mapping, real-time astronomical data integration, and immersive cosmic UI experience.",
+      technologies: ["Next.js", "Three.js", "React-Three-Fiber", "Node.js", "PostgreSQL", "Supabase", "GraphQL", "Framer Motion"],
+      highlights: [
+        "Interactive 3D universe map with solar system visualization",
+        "Real-time data integration from NASA API and SpaceX API",
+        "Object details on hover with celestial body information",
+        "Dynamic filtering by object type and category",
+        "Personalized bookmarking for celestial events",
+        "Dark cosmic UI with glassmorphism effects",
+        "Responsive design across multiple devices",
+        "GraphQL API with Apollo Server integration"
+      ],
+      achievements: "🌌 Immersive space exploration platform",
+      gradient: "from-purple-600 to-indigo-600",
+      category: "Full-Stack & 3D",
+      githubUrl: "https://github.com/Sonlux/AstroVerse",
+      hasDemo: true
+    },
+    {
+      title: "E-Commerce Sentiment Analysis",
+      shortDescription: "Advanced sentiment analysis system for e-commerce product reviews and customer feedback.",
+      fullDescription: "Comprehensive sentiment analysis project using natural language processing techniques to analyze e-commerce customer reviews and feedback. Implements various ML algorithms to classify sentiments and extract meaningful insights from customer opinions.",
+      technologies: ["Python", "Jupyter Notebook", "NLTK", "Pandas", "Scikit-learn", "Matplotlib", "Seaborn", "TextBlob"],
+      highlights: [
+        "Natural language processing for review analysis",
+        "Multiple sentiment classification algorithms",
+        "Customer feedback sentiment scoring",
+        "Data visualization of sentiment trends",
+        "Text preprocessing and feature extraction",
+        "Model performance comparison and evaluation",
+        "Interactive data analysis in Jupyter environment"
+      ],
+      achievements: "💬 NLP-powered customer insights",
+      gradient: "from-orange-600 to-pink-600",
+      category: "AI/ML & NLP",
+      githubUrl: "https://github.com/Sonlux/E-Commerce-Sentiment-Analysis",
+      hasDemo: false
     },
     {
       title: "AI Road Surface Classification using ESP32 Acoustic System",
@@ -41,7 +104,9 @@ const Projects = () => {
       ],
       achievements: "🌟 Featured in Smart Cities research initiatives",
       gradient: "from-green-600 to-teal-600",
-      category: "IoT & Embedded"
+      category: "IoT & Embedded",
+      githubUrl: "",
+      hasDemo: false
     },
     {
       title: "CO₂ & Air Quality Monitoring System",
@@ -58,24 +123,9 @@ const Projects = () => {
       ],
       achievements: "🌱 Deployed in environmental research projects",
       gradient: "from-green-500 to-emerald-600",
-      category: "IoT & Environmental"
-    },
-    {
-      title: "Stock Market Prediction using LSTM & GRU",
-      shortDescription: "AI-powered stock price prediction using advanced neural networks.",
-      fullDescription: "Developed sophisticated deep learning models using LSTM and GRU neural networks for accurate stock price prediction with real-time data integration.",
-      technologies: ["Python", "TensorFlow", "LSTM", "GRU", "Data Analytics", "NumPy", "Pandas"],
-      highlights: [
-        "Deep learning models with LSTM and GRU architectures",
-        "Real-time stock data retrieval and preprocessing",
-        "Technical indicators integration for enhanced accuracy",
-        "Interactive data visualizations and trend analysis",
-        "Backtesting framework for model validation",
-        "Performance optimization for real-time predictions"
-      ],
-      achievements: "📈 Achieved 85%+ prediction accuracy",
-      gradient: "from-orange-600 to-red-600",
-      category: "AI/ML & Finance"
+      category: "IoT & Environmental",
+      githubUrl: "",
+      hasDemo: false
     },
     {
       title: "Crop Disease Detection (SIH 2024)",
@@ -92,7 +142,9 @@ const Projects = () => {
       ],
       achievements: "🌾 Participated in Smart India Hackathon 2024",
       gradient: "from-yellow-500 to-orange-500",
-      category: "AI/ML & Agriculture"
+      category: "AI/ML & Agriculture",
+      githubUrl: "",
+      hasDemo: false
     },
     {
       title: "Kubernetes Failure Forecasting",
@@ -109,12 +161,25 @@ const Projects = () => {
       ],
       achievements: "🏆 Top 5 Finalist at Guidewire DevTrails 2025",
       gradient: "from-purple-600 to-pink-600",
-      category: "Cloud & DevOps"
+      category: "Cloud & DevOps",
+      githubUrl: "",
+      hasDemo: false
     }
   ];
 
   const toggleExpand = (index: number) => {
     setExpandedProject(expandedProject === index ? null : index);
+  };
+
+  const handleGithubClick = (url: string) => {
+    if (url) {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+  };
+
+  const handleDemoClick = (project: any) => {
+    // Placeholder for demo functionality
+    console.log(`Opening demo for ${project.title}`);
   };
 
   return (
@@ -188,14 +253,37 @@ const Projects = () => {
                 
                 <div className="flex justify-between items-center pt-4">
                   <div className="flex space-x-3">
-                    <Button size="sm" variant="outline" className="group-hover:border-blue-500 group-hover:text-blue-500 transition-colors duration-300">
-                      <Github className="w-4 h-4 mr-2" />
-                      Code
-                    </Button>
-                    <Button size="sm" className={`bg-gradient-to-r ${project.gradient} hover:opacity-90 text-white border-0`}>
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Demo
-                    </Button>
+                    {project.githubUrl ? (
+                      <Button 
+                        size="sm" 
+                        variant="outline" 
+                        className="group-hover:border-blue-500 group-hover:text-blue-500 transition-colors duration-300"
+                        onClick={() => handleGithubClick(project.githubUrl)}
+                      >
+                        <Github className="w-4 h-4 mr-2" />
+                        Code
+                      </Button>
+                    ) : (
+                      <Button 
+                        size="sm" 
+                        variant="outline" 
+                        className="opacity-50 cursor-not-allowed"
+                        disabled
+                      >
+                        <Github className="w-4 h-4 mr-2" />
+                        Private
+                      </Button>
+                    )}
+                    {project.hasDemo && (
+                      <Button 
+                        size="sm" 
+                        className={`bg-gradient-to-r ${project.gradient} hover:opacity-90 text-white border-0`}
+                        onClick={() => handleDemoClick(project)}
+                      >
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Demo
+                      </Button>
+                    )}
                   </div>
                   
                   <Button
