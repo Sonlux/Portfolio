@@ -96,83 +96,54 @@ const About = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Enhanced text content */}
-          <div className="space-y-6">
-            <div
-              className="prose prose-lg fade-in-up space-y-6"
-              data-index="0"
-              ref={(el) => el && observerRef.current?.observe(el)}
-            >
-              <p className="text-gray-700 leading-relaxed text-lg">
-                I am Lakshan A.S., a passionate and versatile tech enthusiast
-                with a strong foundation in Embedded Systems, AI/ML, and Cloud
-                Technologies. I thrive on building innovative solutions that
-                bridge hardware and software, from real-time environmental
-                monitoring with ESP32 to Kubernetes-based anomaly detection and
-                AI-powered predictive analytics.
+          {/* About Me Card */}
+          <Card
+            className={`morphing-card hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 border-0 bg-gradient-to-br from-white to-gray-50 group overflow-hidden h-full flex items-center justify-center`}
+            data-index={0}
+            style={{ ...magneticStyle(0.01), minHeight: "220px" }}
+          >
+            <CardContent className="p-6 flex flex-col justify-center h-full">
+              <p className="text-gray-700 leading-relaxed text-base mb-2">
+                Passionate about building impactful tech, I specialize in
+                Embedded Systems, AI/ML, and Cloud. My journey spans real-time
+                IoT monitoring, Kubernetes-based anomaly detection, and
+                AI-powered analytics—bridging hardware and software for
+                real-world solutions. I enjoy working on projects that challenge
+                me to think creatively and push the boundaries of technology. My
+                approach is hands-on, detail-oriented, and always focused on
+                delivering value.
               </p>
-              <p className="text-gray-700 leading-relaxed text-lg">
-                My expertise spans hardware-software integration, data
-                analytics, Linux systems, and prompt engineering. I am skilled
-                in designing scalable, impactful systems using tools like
-                Arduino IDE, Supabase, React, TensorFlow, and BUSMASTER. My work
-                includes accident prevention systems, road surface
-                classification, and intelligent edge AI deployments, all aimed
-                at creating real-world impact.
-              </p>
-              <p className="text-gray-700 leading-relaxed text-lg">
+              <p className="text-gray-700 leading-relaxed text-base">
                 Recognized as an{" "}
                 <span className="font-semibold holographic-text">
                   Embedded Innovator
-                </span>
-                ,{" "}
-                <span className="font-semibold holographic-text">
-                  AI/ML Researcher
-                </span>
-                ,{" "}
+                </span>{" "}
+                and{" "}
                 <span className="font-semibold holographic-text">
                   Cloud Native Developer
                 </span>
-                ,{" "}
-                <span className="font-semibold holographic-text">
-                  Student Leader
-                </span>
-                , and{" "}
-                <span className="font-semibold holographic-text">
-                  Prompt Engineer
-                </span>
-                , I hold certifications from AWS Academy and have been a top
-                finalist in national hackathons. My leadership roles in student
-                organizations reflect my commitment to collaboration and social
-                impact.
+                , I combine hands-on engineering with leadership in student
+                organizations. I’m driven to create, collaborate, and innovate
+                for a smarter, connected future. I value teamwork, continuous
+                learning, and making a positive impact through technology.
               </p>
-              <p className="text-gray-700 leading-relaxed text-lg">
-                I am driven by a mission to leverage technology for good,
-                combining academic excellence with hands-on innovation to
-                deliver solutions that matter. Let’s connect and create the
-                future together!
-              </p>
-            </div>
-          </div>
-
+            </CardContent>
+          </Card>
           {/* Enhanced stats grid */}
           <div className="grid grid-cols-2 gap-6">
             {stats.map((stat, index) => (
               <Card
                 key={index}
-                className={`morphing-card hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 border-0 bg-gradient-to-br from-white to-gray-50 group overflow-hidden ${
-                  visibleElements.has(index + 1)
-                    ? "scale-in visible"
-                    : "scale-in"
-                }`}
+                className={`morphing-card hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 border-0 bg-gradient-to-br from-white to-gray-50 group overflow-hidden h-full flex items-center justify-center`}
                 data-index={index + 1}
                 ref={(el) => el && observerRef.current?.observe(el)}
                 style={{
                   ...magneticStyle(0.01),
                   animationDelay: `${index * 0.1}s`,
+                  minHeight: "220px",
                 }}
               >
-                <CardContent className="p-6 text-center relative">
+                <CardContent className="p-6 text-center relative flex flex-col justify-center h-full">
                   {/* Animated background effect */}
                   <div
                     className={`absolute inset-0 bg-gradient-to-r from-${stat.color}-400/20 to-${stat.color}-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
@@ -184,29 +155,14 @@ const About = () => {
                       className={`w-8 h-8 text-${stat.color}-600 mx-auto group-hover:scale-125 transition-transform duration-500 group-hover:rotate-12`}
                     />
                   </div>
-
-                  {/* Value with holographic effect */}
                   <div
-                    className={`text-4xl font-bold text-${stat.color}-600 mb-2 group-hover:scale-110 transition-transform duration-300 holographic-text`}
+                    className={`text-4xl font-bold text-${stat.color}-600 mb-2 group-hover:scale-110 transition-transform duration-300`}
                   >
                     {stat.value}
                   </div>
-
-                  <div className="text-gray-600 font-medium mb-1">
-                    {stat.label}
-                  </div>
-                  <div className="text-xs text-gray-500">
+                  <div className="text-lg font-semibold mb-1">{stat.label}</div>
+                  <div className="text-gray-500 text-sm">
                     {stat.description}
-                  </div>
-
-                  {/* Animated progress bar */}
-                  <div
-                    className={`w-full h-1 bg-gradient-to-r from-${stat.color}-400 to-${stat.color}-600 rounded-full mt-3 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left`}
-                  />
-
-                  {/* Sparkle effect on hover */}
-                  <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse" />
                   </div>
                 </CardContent>
               </Card>

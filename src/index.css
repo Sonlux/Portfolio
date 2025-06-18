@@ -1,10 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Custom Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @layer base {
   :root {
@@ -94,10 +92,10 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     overflow-x: hidden;
   }
-  
+
   html {
     scroll-behavior: smooth;
   }
@@ -148,7 +146,7 @@
 }
 
 .matrix-rain::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -100%;
   left: 0;
@@ -164,13 +162,24 @@
 }
 
 @keyframes matrix-fall {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(50%); }
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(50%);
+  }
 }
 
 /* Holographic Text Effect */
 .holographic-text {
-  background: linear-gradient(45deg, #ff006e, #fb5607, #ffbe0b, #8338ec, #3a86ff);
+  background: linear-gradient(
+    45deg,
+    #ff006e,
+    #fb5607,
+    #ffbe0b,
+    #8338ec,
+    #3a86ff
+  );
   background-size: 600% 600%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -180,10 +189,19 @@
 }
 
 @keyframes holographic-shimmer {
-  0%, 100% { background-position: 0% 50%; }
-  25% { background-position: 100% 50%; }
-  50% { background-position: 100% 100%; }
-  75% { background-position: 0% 100%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
 }
 
 /* Advanced Glitch Effect */
@@ -215,24 +233,51 @@
 }
 
 @keyframes glitch-anim {
-  0%, 99% { transform: translate(0); }
-  1% { transform: translate(2px, 0); }
-  2% { transform: translate(-2px, 0); }
-  3% { transform: translate(0); }
+  0%,
+  99% {
+    transform: translate(0);
+  }
+  1% {
+    transform: translate(2px, 0);
+  }
+  2% {
+    transform: translate(-2px, 0);
+  }
+  3% {
+    transform: translate(0);
+  }
 }
 
 @keyframes glitch-anim-1 {
-  0%, 99% { transform: translate(0); }
-  1% { transform: translate(-2px, 2px); }
-  2% { transform: translate(2px, -2px); }
-  3% { transform: translate(0); }
+  0%,
+  99% {
+    transform: translate(0);
+  }
+  1% {
+    transform: translate(-2px, 2px);
+  }
+  2% {
+    transform: translate(2px, -2px);
+  }
+  3% {
+    transform: translate(0);
+  }
 }
 
 @keyframes glitch-anim-2 {
-  0%, 99% { transform: translate(0); }
-  1% { transform: translate(2px, -2px); }
-  2% { transform: translate(-2px, 2px); }
-  3% { transform: translate(0); }
+  0%,
+  99% {
+    transform: translate(0);
+  }
+  1% {
+    transform: translate(2px, -2px);
+  }
+  2% {
+    transform: translate(-2px, 2px);
+  }
+  3% {
+    transform: translate(0);
+  }
 }
 
 /* Morphing Card Effect */
@@ -243,13 +288,18 @@
 }
 
 .morphing-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -262,9 +312,7 @@
 
 .morphing-card:hover {
   transform: rotateY(5deg) rotateX(5deg) translateZ(20px);
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.1),
-    0 0 50px rgba(59, 130, 246, 0.3),
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 0 50px rgba(59, 130, 246, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
@@ -273,30 +321,37 @@
   position: absolute;
   width: 200%;
   height: 200%;
-  background: linear-gradient(-45deg, #ff006e, #fb5607, #ffbe0b, #8338ec, #3a86ff);
+  background: linear-gradient(
+    -45deg,
+    #ff006e,
+    #fb5607,
+    #ffbe0b,
+    #8338ec,
+    #3a86ff
+  );
   background-size: 400% 400%;
   animation: liquid-flow 15s ease infinite;
   opacity: 0.1;
 }
 
 @keyframes liquid-flow {
-  0% { 
+  0% {
     background-position: 0% 50%;
     transform: rotate(0deg) scale(1);
   }
-  25% { 
+  25% {
     background-position: 100% 50%;
     transform: rotate(90deg) scale(1.1);
   }
-  50% { 
+  50% {
     background-position: 100% 100%;
     transform: rotate(180deg) scale(1);
   }
-  75% { 
+  75% {
     background-position: 0% 100%;
     transform: rotate(270deg) scale(1.1);
   }
-  100% { 
+  100% {
     background-position: 0% 50%;
     transform: rotate(360deg) scale(1);
   }
@@ -328,12 +383,13 @@
 }
 
 @keyframes neural-pulse {
-  0%, 100% { 
+  0%,
+  100% {
     opacity: 0.3;
     transform: scale(1);
     box-shadow: 0 0 10px #3b82f6;
   }
-  50% { 
+  50% {
     opacity: 1;
     transform: scale(1.5);
     box-shadow: 0 0 20px #3b82f6;
@@ -341,14 +397,14 @@
 }
 
 @keyframes neural-flow {
-  0% { 
+  0% {
     opacity: 0;
     transform: translateX(-100%);
   }
-  50% { 
+  50% {
     opacity: 1;
   }
-  100% { 
+  100% {
     opacity: 0;
     transform: translateX(100%);
   }
@@ -359,8 +415,10 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: 
-    linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+  background-image: linear-gradient(
+      rgba(59, 130, 246, 0.1) 1px,
+      transparent 1px
+    ),
     linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
   background-size: 50px 50px;
   animation: grid-move 20s linear infinite;
@@ -368,8 +426,12 @@
 }
 
 @keyframes grid-move {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(50px, 50px); }
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
 }
 
 /* Floating Elements */
@@ -378,19 +440,20 @@
 }
 
 @keyframes float-complex {
-  0%, 100% { 
+  0%,
+  100% {
     transform: translateY(0px) translateX(0px) rotate(0deg);
     opacity: 0.7;
   }
-  25% { 
+  25% {
     transform: translateY(-20px) translateX(10px) rotate(5deg);
     opacity: 1;
   }
-  50% { 
+  50% {
     transform: translateY(-10px) translateX(-5px) rotate(-3deg);
     opacity: 0.8;
   }
-  75% { 
+  75% {
     transform: translateY(-15px) translateX(15px) rotate(7deg);
     opacity: 0.9;
   }
@@ -403,7 +466,7 @@
 }
 
 .text-reveal::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -415,8 +478,12 @@
 }
 
 @keyframes text-reveal-sweep {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 /* Magnetic Hover Effect */
@@ -435,13 +502,18 @@
 }
 
 .cosmic-button::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
   transition: left 0.5s ease;
 }
 
@@ -455,9 +527,15 @@
 }
 
 /* Parallax Scroll Effects */
-.parallax-slow { transform: translateY(calc(var(--scroll) * 0.5px)); }
-.parallax-medium { transform: translateY(calc(var(--scroll) * 0.3px)); }
-.parallax-fast { transform: translateY(calc(var(--scroll) * 0.1px)); }
+.parallax-slow {
+  transform: translateY(calc(var(--scroll) * 0.5px));
+}
+.parallax-medium {
+  transform: translateY(calc(var(--scroll) * 0.3px));
+}
+.parallax-fast {
+  transform: translateY(calc(var(--scroll) * 0.1px));
+}
 
 /* Intersection Observer Animations */
 .fade-in-up {
@@ -512,15 +590,27 @@
 }
 
 /* Performance optimizations */
-.will-change-transform { will-change: transform; }
-.will-change-opacity { will-change: opacity; }
-.gpu-accelerated { transform: translateZ(0); }
+.will-change-transform {
+  will-change: transform;
+}
+.will-change-opacity {
+  will-change: opacity;
+}
+.gpu-accelerated {
+  transform: translateZ(0);
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .holographic-text { font-size: 0.8em; }
-  .morphing-card:hover { transform: none; }
-  .floating-element { animation-duration: 6s; }
+  .holographic-text {
+    font-size: 0.8em;
+  }
+  .morphing-card:hover {
+    transform: none;
+  }
+  .floating-element {
+    animation-duration: 6s;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
