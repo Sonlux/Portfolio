@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { useScrollAnimation, useMagneticEffect } from '@/hooks/useScrollAnimation';
 import { Sparkles, Zap, Code, Database } from 'lucide-react';
 
@@ -59,9 +58,7 @@ const Skills = () => {
       skills: [
         { name: "ESP32", level: 88, icon: "🔧", color: "from-green-500 to-teal-500" },
         { name: "Arduino IDE", level: 85, icon: "🔌", color: "from-teal-500 to-cyan-500" },
-        { name: "FreeRTOS", level: 80, icon: "⏱️", color: "from-purple-500 to-indigo-500" },
-        { name: "MH-Z19E", level: 75, icon: "🌬️", color: "from-green-500 to-blue-500" },
-        { name: "MQ-135 Sensors", level: 78, icon: "📡", color: "from-red-500 to-pink-500" }
+        { name: "FreeRTOS", level: 80, icon: "⏱️", color: "from-purple-500 to-indigo-500" }
       ],
       color: "from-orange-500 to-red-500",
       bgIcon: Zap
@@ -201,12 +198,9 @@ const Skills = () => {
                           </span>
                           <span className="text-gray-700 font-medium text-sm">{skill.name}</span>
                         </div>
-                        <Badge variant="outline" className="text-xs bg-white/50">
-                          {skill.level}%
-                        </Badge>
                       </div>
                       
-                      {/* Enhanced progress bar */}
+                      {/* Enhanced progress bar without percentage */}
                       <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
                         <div 
                           className={`h-3 rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1500 ease-out relative overflow-hidden`}

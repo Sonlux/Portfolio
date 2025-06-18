@@ -63,64 +63,42 @@ const About = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto" />
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Enhanced text content with photo */}
-          <div className="space-y-8">
-            {/* Professional Photo */}
-            <div 
-              className="morphing-card relative group"
-              style={magneticStyle(0.005)}
-            >
-              <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                <img 
-                  src="/lovable-uploads/1caf2fa6-07c7-4311-9dbc-cdddd2788361.png"
-                  alt="Lakshan Amineni - Professional Photo"
-                  className="w-full h-80 object-cover object-center transition-transform duration-700 group-hover:scale-110"
-                />
-                
-                {/* Overlay with holographic effect */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                {/* Floating elements on hover */}
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-110">
-                  <div className="w-3 h-3 bg-gradient-to-r from-blue-400 to-purple-600 rounded-full animate-pulse" />
-                </div>
-                <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-125">
-                  <div className="w-2 h-2 bg-gradient-to-r from-green-400 to-teal-600 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
-                </div>
-                
-                {/* Shimmer effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-              </div>
-            </div>
-
-            {/* Text content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Enhanced text content */}
+          <div className="space-y-6">
             <div 
               className="prose prose-lg fade-in-up space-y-6"
               data-index="0"
               ref={(el) => el && observerRef.current?.observe(el)}
             >
-              <p className="text-gray-700 leading-relaxed text-reveal">
+              <p className="text-gray-700 leading-relaxed text-lg">
                 I'm passionate about creating <span className="font-semibold holographic-text">real-world impact</span> through 
-                innovative technology solutions. Currently pursuing Electronics & Computer Engineering at SRM Institute 
-                with a stellar 8.07/10 CGPA, I specialize in building systems that make a difference.
+                innovative technology solutions. Currently pursuing <span className="font-semibold text-blue-600">Electronics & Computer Engineering</span> at 
+                <span className="font-semibold text-purple-600"> SRM Institute of Science and Technology</span> with a stellar 
+                <span className="font-semibold holographic-text"> 8.07/10 CGPA</span>, I specialize in building systems that make a difference.
               </p>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed text-lg">
                 My expertise spans <span className="font-semibold holographic-text">AI/ML</span>, 
                 <span className="font-semibold holographic-text"> Smart Cities</span>, and 
                 <span className="font-semibold holographic-text"> AI-for-good</span> initiatives. 
                 From Kubernetes anomaly detection systems to environmental KPI monitoring using IoT sensors, 
                 I thrive on creating scalable solutions that drive automation and efficiency.
               </p>
-              <p className="text-gray-700 leading-relaxed">
-                Beyond technical innovation, I'm actively involved in leadership roles as HR Lead at Club Radiance 
-                and member of the Directorate of Student Affairs, where I organize impactful events and foster 
-                collaboration in the tech community.
+              <p className="text-gray-700 leading-relaxed text-lg">
+                Beyond technical innovation, I'm actively involved in leadership roles as 
+                <span className="font-semibold text-green-600"> HR Lead at Club Radiance</span> and member of the 
+                <span className="font-semibold text-blue-600"> Directorate of Student Affairs</span>, where I organize 
+                impactful events and foster collaboration in the tech community.
+              </p>
+              <p className="text-gray-700 leading-relaxed text-lg">
+                I believe in leveraging technology to solve real-world problems and create sustainable solutions 
+                that benefit society. My journey combines academic excellence with practical implementation, 
+                always focusing on innovation that makes a meaningful impact.
               </p>
             </div>
           </div>
           
-          {/* Enhanced stats grid with advanced animations */}
+          {/* Enhanced stats grid */}
           <div className="grid grid-cols-2 gap-6">
             {stats.map((stat, index) => (
               <Card 
@@ -170,32 +148,32 @@ const About = () => {
         </div>
         
         {/* Enhanced Core Values Section */}
-        <div className="mt-16">
+        <div className="mt-20">
           <h3 
-            className="text-2xl font-bold text-gray-900 text-center mb-8 holographic-text"
+            className="text-3xl font-bold text-gray-900 text-center mb-12 holographic-text"
             style={magneticStyle(0.01)}
           >
             Core Focus Areas
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 title: "Smart Cities & Automation",
-                description: "Building intelligent systems for urban infrastructure and automated decision-making",
+                description: "Building intelligent systems for urban infrastructure and automated decision-making processes",
                 gradient: "from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200",
                 icon: "🤖",
                 color: "blue"
               },
               {
                 title: "AI-for-Good",
-                description: "Leveraging technology for environmental monitoring and social impact",
+                description: "Leveraging artificial intelligence for environmental monitoring and positive social impact",
                 gradient: "from-green-50 to-green-100 hover:from-green-100 hover:to-green-200",
                 icon: "🌍",
                 color: "green"
               },
               {
                 title: "Cloud & Edge Computing",
-                description: "Scalable infrastructure and real-time processing at the edge",
+                description: "Scalable cloud infrastructure and real-time processing at the network edge",
                 gradient: "from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200",
                 icon: "☁️",
                 color: "purple"
@@ -203,7 +181,7 @@ const About = () => {
             ].map((area, index) => (
               <div
                 key={index}
-                className={`morphing-card text-center p-6 rounded-xl bg-gradient-to-br ${area.gradient} transition-all duration-500 hover:scale-105 group relative overflow-hidden`}
+                className={`morphing-card text-center p-8 rounded-xl bg-gradient-to-br ${area.gradient} transition-all duration-500 hover:scale-105 group relative overflow-hidden`}
                 style={{
                   ...magneticStyle(0.005),
                   animationDelay: `${index * 0.2}s`
@@ -214,15 +192,15 @@ const About = () => {
                   <div className="cyber-grid" />
                 </div>
                 
-                <div className={`w-16 h-16 bg-gradient-to-r from-${area.color}-500 to-${area.color}-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-500`}>
+                <div className={`w-16 h-16 bg-gradient-to-r from-${area.color}-500 to-${area.color}-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-500`}>
                   <span className="text-white font-bold text-2xl">{area.icon}</span>
                 </div>
                 
-                <h4 className="font-semibold text-gray-900 mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
+                <h4 className="font-semibold text-gray-900 mb-3 text-lg group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
                   {area.title}
                 </h4>
                 
-                <p className="text-sm text-gray-600 relative z-10">{area.description}</p>
+                <p className="text-sm text-gray-600 relative z-10 leading-relaxed">{area.description}</p>
                 
                 {/* Hover effect overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-r from-${area.color}-400/10 to-${area.color}-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl`} />
