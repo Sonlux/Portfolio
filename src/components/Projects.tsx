@@ -228,7 +228,21 @@ const Projects = () => {
     }
   };
 
-  const handleDemoClick = (project: any) => {
+  type Project = {
+    title: string;
+    shortDescription: string;
+    fullDescription: string;
+    technologies: string[];
+    highlights: string[];
+    achievements: string;
+    gradient: string;
+    category: string;
+    githubUrl: string;
+    hasDemo: boolean;
+    demoUrl?: string;
+  };
+
+  const handleDemoClick = (project: Project) => {
     // Placeholder for demo functionality
     console.log(`Opening demo for ${project.title}`);
   };
