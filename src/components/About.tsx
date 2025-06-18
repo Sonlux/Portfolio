@@ -63,11 +63,40 @@ const About = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto" />
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Enhanced text content with reveal animations */}
-          <div className="space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          {/* Enhanced text content with photo */}
+          <div className="space-y-8">
+            {/* Professional Photo */}
             <div 
-              className="prose prose-lg fade-in-up"
+              className="morphing-card relative group"
+              style={magneticStyle(0.005)}
+            >
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                <img 
+                  src="/lovable-uploads/1caf2fa6-07c7-4311-9dbc-cdddd2788361.png"
+                  alt="Lakshan Amineni - Professional Photo"
+                  className="w-full h-80 object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                />
+                
+                {/* Overlay with holographic effect */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                {/* Floating elements on hover */}
+                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-110">
+                  <div className="w-3 h-3 bg-gradient-to-r from-blue-400 to-purple-600 rounded-full animate-pulse" />
+                </div>
+                <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-125">
+                  <div className="w-2 h-2 bg-gradient-to-r from-green-400 to-teal-600 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
+                </div>
+                
+                {/* Shimmer effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+              </div>
+            </div>
+
+            {/* Text content */}
+            <div 
+              className="prose prose-lg fade-in-up space-y-6"
               data-index="0"
               ref={(el) => el && observerRef.current?.observe(el)}
             >
