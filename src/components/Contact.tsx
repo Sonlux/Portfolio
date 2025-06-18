@@ -117,13 +117,13 @@ const Contact = () => {
               </h3>
               <div className="flex space-x-4">
                 <a
-                  href="https://linkedin.com/in/lakshan-amineni"
+                  href="https://www.linkedin.com/in/lakshan2810/"
                   className="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
                 >
                   <Linkedin className="w-6 h-6 text-white" />
                 </a>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/Sonlux"
                   className="w-12 h-12 bg-gradient-to-r from-gray-700 to-gray-900 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
                 >
                   <Github className="w-6 h-6 text-white" />
