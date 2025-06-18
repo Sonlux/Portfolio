@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useRef } from 'react';
 import { ChevronDown, Github, Linkedin, Mail, Download, Code, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -148,12 +147,14 @@ const Hero = () => {
           <div className="flex justify-center space-x-6">
             {[
               { icon: Mail, href: "mailto:lakshanamineni@gmail.com", color: "from-red-500 to-pink-500" },
-              { icon: Linkedin, href: "https://linkedin.com/in/lakshan-amineni", color: "from-blue-600 to-blue-800" },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/lakshan2810/", color: "from-blue-600 to-blue-800" },
               { icon: Github, href: "https://github.com/Sonlux", color: "from-gray-700 to-gray-900" }
             ].map((social, index) => (
               <a 
                 key={index}
                 href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="morphing-card group relative p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-500 hover:scale-125"
                 style={{
                   animationDelay: `${index * 0.1}s`

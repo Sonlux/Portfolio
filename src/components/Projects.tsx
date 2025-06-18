@@ -216,34 +216,6 @@ const Projects = () => {
       githubUrl: "",
       hasDemo: false,
     },
-    {
-      title: "Kubernetes Failure Forecasting",
-      shortDescription:
-        "Predictive system for Kubernetes cluster failure prevention.",
-      fullDescription:
-        "Advanced AI-driven system for predicting and mitigating Kubernetes cluster failures using time-series forecasting and anomaly detection techniques.",
-      technologies: [
-        "Kubernetes",
-        "Time-series Analysis",
-        "Anomaly Detection",
-        "Prometheus",
-        "Grafana",
-        "Python",
-      ],
-      highlights: [
-        "Time-series forecasting for failure prediction",
-        "Anomaly detection for early warning systems",
-        "Prometheus and Grafana integration for monitoring",
-        "Proactive failure resolution mechanisms",
-        "System reliability enhancement",
-        "Automated scaling and resource optimization",
-      ],
-      achievements: "🏆 Top 5 Finalist at Guidewire DevTrails 2025",
-      gradient: "from-purple-600 to-pink-600",
-      category: "Cloud & DevOps",
-      githubUrl: "",
-      hasDemo: false,
-    },
   ];
 
   const toggleExpand = (index: number) => {

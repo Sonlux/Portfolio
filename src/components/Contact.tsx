@@ -1,9 +1,10 @@
+
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, Linkedin, Github, MapPin, Send } from "lucide-react";
+import { Mail, Linkedin, Github, MapPin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
@@ -40,13 +41,6 @@ const Contact = () => {
       value: "lakshanamineni@gmail.com",
       href: "mailto:lakshanamineni@gmail.com",
       color: "from-blue-500 to-cyan-500",
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+91 7812017555",
-      href: "tel:+917812017555",
-      color: "from-green-500 to-teal-500",
     },
     {
       icon: Linkedin,
@@ -118,12 +112,16 @@ const Contact = () => {
               <div className="flex space-x-4">
                 <a
                   href="https://www.linkedin.com/in/lakshan2810/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
                 >
                   <Linkedin className="w-6 h-6 text-white" />
                 </a>
                 <a
                   href="https://github.com/Sonlux"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-12 h-12 bg-gradient-to-r from-gray-700 to-gray-900 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
                 >
                   <Github className="w-6 h-6 text-white" />
