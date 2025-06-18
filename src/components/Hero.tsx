@@ -5,10 +5,8 @@ import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   const [currentRole, setCurrentRole] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   
   const roles = ['AI Innovator', 'Cloud Architect', 'Problem Solver', 'Tech Visionary', 'Code Artist'];
 
@@ -20,112 +18,11 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Advanced particle system
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const particles: Array<{
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      size: number;
-      color: string;
-      life: number;
-      maxLife: number;
-    }> = [];
-
-    const createParticle = (x: number, y: number) => {
-      particles.push({
-        x,
-        y,
-        vx: (Math.random() - 0.5) * 2,
-        vy: (Math.random() - 0.5) * 2,
-        size: Math.random() * 3 + 1,
-        color: `hsl(${Math.random() * 60 + 200}, 70%, ${Math.random() * 30 + 50}%)`,
-        life: 0,
-        maxLife: Math.random() * 100 + 50
-      });
-    };
-
-    const updateParticles = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      for (let i = particles.length - 1; i >= 0; i--) {
-        const particle = particles[i];
-        particle.x += particle.vx;
-        particle.y += particle.vy;
-        particle.life++;
-        
-        const alpha = 1 - (particle.life / particle.maxLife);
-        ctx.save();
-        ctx.globalAlpha = alpha;
-        ctx.fillStyle = particle.color;
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-        
-        if (particle.life >= particle.maxLife) {
-          particles.splice(i, 1);
-        }
-      }
-      
-      // Create new particles
-      if (Math.random() < 0.1) {
-        createParticle(
-          Math.random() * canvas.width,
-          Math.random() * canvas.height
-        );
-      }
-      
-      requestAnimationFrame(updateParticles);
-    };
-
-    updateParticles();
-
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // Mouse tracking for magnetic effects
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  const magneticStyle = (strength: number = 0.1) => ({
-    transform: `translate(${(mousePosition.x - window.innerWidth / 2) * strength}px, ${(mousePosition.y - window.innerHeight / 2) * strength}px)`
-  });
-
   return (
     <section 
       ref={heroRef}
       className="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden"
     >
-      {/* Advanced animated background */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 pointer-events-none"
-        style={{ zIndex: 1 }}
-      />
-      
       {/* Matrix Rain Effect */}
       <div className="matrix-rain absolute inset-0" style={{ zIndex: 2 }} />
       
@@ -159,8 +56,7 @@ const Hero = () => {
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 8}s`,
-              ...magneticStyle(0.05)
+              animationDelay: `${Math.random() * 8}s`
             }}
           >
             <div 
@@ -183,7 +79,6 @@ const Hero = () => {
               <span 
                 className="holographic-text glitch"
                 data-text="Lakshan"
-                style={magneticStyle(0.02)}
               >
                 Lakshan
               </span>
@@ -196,7 +91,6 @@ const Hero = () => {
             <span 
               key={currentRole} 
               className="holographic-text morphing-card transition-all duration-500 px-4 py-2 rounded-lg backdrop-blur-sm"
-              style={magneticStyle(0.03)}
             >
               {roles[currentRole]}
             </span>
@@ -220,7 +114,6 @@ const Hero = () => {
               size="lg" 
               className="cosmic-button morphing-card bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white/20 transition-all duration-500 hover:scale-110 hover:shadow-2xl group"
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-              style={magneticStyle(0.02)}
             >
               <Sparkles className="w-4 h-4 mr-2 group-hover:animate-spin" />
               Explore My Universe
@@ -235,7 +128,6 @@ const Hero = () => {
                 link.download = 'Lakshan_AS_Resume.pdf';
                 link.click();
               }}
-              style={magneticStyle(0.02)}
             >
               <Download className="w-4 h-4 mr-2 group-hover:animate-bounce" />
               Download CV
@@ -246,14 +138,13 @@ const Hero = () => {
               variant="outline"
               className="cosmic-button morphing-card bg-gradient-to-r from-green-500/20 to-emerald-600/20 backdrop-blur-md border-green-400/30 text-green-300 hover:bg-green-500/30 transition-all duration-500 hover:scale-110 hover:shadow-2xl group"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              style={magneticStyle(0.02)}
             >
               <Mail className="w-4 h-4 mr-2 group-hover:animate-pulse" />
               Let's Connect
             </Button>
           </div>
           
-          {/* Enhanced social links with magnetic effect */}
+          {/* Enhanced social links */}
           <div className="flex justify-center space-x-6">
             {[
               { icon: Mail, href: "mailto:lakshanamineni@gmail.com", color: "from-red-500 to-pink-500" },
@@ -265,7 +156,6 @@ const Hero = () => {
                 href={social.href}
                 className="morphing-card group relative p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-500 hover:scale-125"
                 style={{
-                  ...magneticStyle(0.03),
                   animationDelay: `${index * 0.1}s`
                 }}
               >
@@ -284,7 +174,6 @@ const Hero = () => {
       <div 
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer group"
         onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-        style={magneticStyle(0.01)}
       >
         <div className="morphing-card p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 group-hover:bg-white/20 transition-all duration-300">
           <ChevronDown 

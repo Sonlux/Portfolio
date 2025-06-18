@@ -9,10 +9,12 @@ import Achievements from '@/components/Achievements';
 import Leadership from '@/components/Leadership';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import QuantumCursor from '@/components/QuantumCursor';
 
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <QuantumCursor />
       <Hero />
       <About />
       <Skills />

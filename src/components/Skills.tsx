@@ -244,7 +244,7 @@ const Skills = () => {
       </div>
 
       {/* Custom keyframes for shimmer effect */}
-      <style jsx>{`
+      <style>{`
         @keyframes shimmer {
           0% { transform: translateX(-100%) skewX(-12deg); }
           100% { transform: translateX(200%) skewX(-12deg); }

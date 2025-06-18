@@ -9,7 +9,7 @@ interface UseScrollAnimationOptions {
 
 export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
   const [isVisible, setIsVisible] = useState(false);
-  const elementRef = useRef<HTMLElement>(null);
+  const elementRef = useRef<HTMLDivElement>(null);
 
   const { threshold = 0.1, rootMargin = '0px', triggerOnce = true } = options;
 
@@ -57,7 +57,7 @@ export const useParallaxScroll = () => {
 
 export const useMagneticEffect = (strength: number = 0.1) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const elementRef = useRef<HTMLElement>(null);
+  const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
