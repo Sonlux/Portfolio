@@ -199,6 +199,11 @@ a,
 .cyber-link {
   color: #38bdf8;
   font-weight: 700;
+  text-decoration: none;
+  transition: text-decoration 0.2s;
+}
+a:hover,
+.cyber-link:hover {
   text-decoration: underline;
 }
 
