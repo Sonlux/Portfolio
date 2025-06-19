@@ -1,223 +1,227 @@
-
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Projects = () => {
   const [expandedProject, setExpandedProject] = useState<number | null>(null);
 
-  const projects = [
-    {
-      title: "Kubescape - Kubernetes Anomaly Detection & LLM-based Remediation",
-      shortDescription:
-        "Real-time anomaly detection in Kubernetes clusters with AI-powered remediation system.",
-      fullDescription:
-        "Built a comprehensive multi-agent system for real-time anomaly detection in Kubernetes clusters. Features OOM risk identification, resource exhaustion monitoring, and crash loop detection with automated remediation powered by NVIDIA LLM integration.",
-      technologies: [
-        "Kubernetes",
-        "Python",
-        "Machine Learning",
-        "NVIDIA LLM",
-        "Docker",
-        "Prometheus",
-        "Grafana",
-      ],
-      highlights: [
-        "Real-time anomaly detection using time-series forecasting",
-        "Interactive dashboard with comprehensive metrics visualization",
-        "NVIDIA LLM integration for intelligent root cause analysis",
-        "Automated remediation system with validation and rollback",
-        "Multi-agent architecture for scalable monitoring",
-        "Custom alerting system with severity classification",
-      ],
-      achievements: "🏆 Top 5 Finalist at Guidewire DevTrails 2025",
-      gradient: "from-blue-600 to-purple-600",
-      category: "AI/ML & Cloud",
-      githubUrl:
-        "https://github.com/Sonlux/K8S-Anomaly-Detection-and-Remediation",
-      hasDemo: true,
-      demoUrl: "https://kubescape.vercel.app/",
-    },
-    {
-      title: "TRADEO - Stock Market Prediction & Trading Platform",
-      shortDescription:
-        "Comprehensive stock market prediction platform combining ML models with real-time analysis.",
-      fullDescription:
-        "A comprehensive stock market prediction and trading platform that combines machine learning models with real-time market data analysis. Features Flask backend API with various ML models for market prediction, interactive dashboard, and trading signals generation.",
-      technologies: [
-        "Flask",
-        "TensorFlow",
-        "PyTorch",
-        "XGBoost",
-        "Pandas",
-        "NumPy",
-        "Scikit-learn",
-        "Alpha Vantage API",
-      ],
-      highlights: [
-        "Real-time stock data analysis and visualization",
-        "Multiple ML models for price predictions (LSTM, GRU, XGBoost)",
-        "RESTful API endpoints for stock data integration",
-        "Interactive dashboard with historical data visualization",
-        "Trading signals generation with confidence metrics",
-        "Alpha Vantage and Yahoo Finance API integration",
-        "Flask-CORS enabled for cross-origin requests",
-      ],
-      achievements: "📈 Advanced ML-powered trading platform",
-      gradient: "from-green-600 to-emerald-600",
-      category: "AI/ML & Finance",
-      githubUrl: "https://github.com/Sonlux/TRADEO",
-      hasDemo: true,
-    },
-    {
-      title: "AstroVerse - Interactive 3D Astronomy Platform",
-      shortDescription:
-        "Real-time, interactive astronomy web platform for space enthusiasts and researchers.",
-      fullDescription:
-        "AstroVerse is an ambitious, real-time, and interactive astronomy web platform designed for space enthusiasts, students, educators, and researchers. Features 3D universe mapping, real-time astronomical data integration, and immersive cosmic UI experience.",
-      technologies: [
-        "Next.js",
-        "Three.js",
-        "React-Three-Fiber",
-        "Node.js",
-        "PostgreSQL",
-        "Supabase",
-        "GraphQL",
-        "Framer Motion",
-      ],
-      highlights: [
-        "Interactive 3D universe map with solar system visualization",
-        "Real-time data integration from NASA API and SpaceX API",
-        "Object details on hover with celestial body information",
-        "Dynamic filtering by object type and category",
-        "Personalized bookmarking for celestial events",
-        "Dark cosmic UI with glassmorphism effects",
-        "Responsive design across multiple devices",
-        "GraphQL API with Apollo Server integration",
-      ],
-      achievements: "🌌 Immersive space exploration platform",
-      gradient: "from-purple-600 to-indigo-600",
-      category: "Full-Stack & 3D",
-      githubUrl: "https://github.com/Sonlux/AstroVerse",
-      hasDemo: true,
-    },
-    {
-      title: "E-Commerce Sentiment Analysis",
-      shortDescription:
-        "Advanced sentiment analysis system for e-commerce product reviews and customer feedback.",
-      fullDescription:
-        "Comprehensive sentiment analysis project using natural language processing techniques to analyze e-commerce customer reviews and feedback. Implements various ML algorithms to classify sentiments and extract meaningful insights from customer opinions.",
-      technologies: [
-        "Python",
-        "Jupyter Notebook",
-        "NLTK",
-        "Pandas",
-        "Scikit-learn",
-        "Matplotlib",
-        "Seaborn",
-        "TextBlob",
-      ],
-      highlights: [
-        "Natural language processing for review analysis",
-        "Multiple sentiment classification algorithms",
-        "Customer feedback sentiment scoring",
-        "Data visualization of sentiment trends",
-        "Text preprocessing and feature extraction",
-        "Model performance comparison and evaluation",
-        "Interactive data analysis in Jupyter environment",
-      ],
-      achievements: "💬 NLP-powered customer insights",
-      gradient: "from-orange-600 to-pink-600",
-      category: "AI/ML & NLP",
-      githubUrl: "https://github.com/Sonlux/E-Commerce-Sentiment-Analysis",
-      hasDemo: false,
-    },
-    {
-      title: "AI Road Surface Classification using ESP32 Acoustic System",
-      shortDescription:
-        "Real-time road surface classification using embedded acoustic analysis.",
-      fullDescription:
-        "Developed an innovative embedded system using ESP32 for real-time road surface classification through acoustic pattern recognition, contributing to smart city infrastructure enhancement.",
-      technologies: [
-        "ESP32",
-        "Arduino IDE",
-        "FreeRTOS",
-        "Machine Learning",
-        "Acoustic Processing",
-        "IoT",
-      ],
-      highlights: [
-        "Embedded acoustic systems for real-time road analysis",
-        "Advanced signal processing algorithms for surface classification",
-        "Microphone and vibration sensor integration",
-        "Real-time data processing with FreeRTOS",
-        "Smart city infrastructure enhancement applications",
-        "Edge AI implementation for immediate response",
-      ],
-      achievements: "🌟 Featured in Smart Cities research initiatives",
-      gradient: "from-green-600 to-teal-600",
-      category: "IoT & Embedded",
-      githubUrl: "",
-      hasDemo: false,
-    },
-    {
-      title: "CO₂ & Air Quality Monitoring System",
-      shortDescription:
-        "Real-time environmental monitoring using ESP32 with cloud integration.",
-      fullDescription:
-        "Designed comprehensive environmental KPI monitoring system using ESP32 with specialized sensors for real-time air quality tracking and cloud-based analytics.",
-      technologies: [
-        "ESP32",
-        "MH-Z19E",
-        "MQ-135",
-        "FreeRTOS",
-        "Cloud Computing",
-        "Real-time Analytics",
-      ],
-      highlights: [
-        "Environmental KPI tracking with high precision sensors",
-        "MH-Z19E CO₂ sensor integration for accurate measurements",
-        "MQ-135 air quality sensor for comprehensive monitoring",
-        "Cloud-based data management and storage",
-        "Real-time visualization and analytics dashboard",
-        "Automated alerting for threshold violations",
-      ],
-      achievements: "🌱 Deployed in environmental research projects",
-      gradient: "from-green-500 to-emerald-600",
-      category: "IoT & Environmental",
-      githubUrl: "",
-      hasDemo: false,
-    },
-    {
-      title: "Crop Disease Detection (SIH 2024)",
-      shortDescription:
-        "AI-driven crop disease prediction and management system.",
-      fullDescription:
-        "Ideated Smart Agriculture Forecasting Engine (S.A.F.E) for early crop disease detection using machine learning techniques with image and environmental data analysis.",
-      technologies: [
-        "Python",
-        "Computer Vision",
-        "Machine Learning",
-        "Image Processing",
-        "Agricultural Data",
-      ],
-      highlights: [
-        "Smart Agriculture Forecasting Engine (S.A.F.E) development",
-        "Machine learning for crop health analysis",
-        "Image processing for disease pattern recognition",
-        "Environmental data integration for comprehensive analysis",
-        "Early warning system for farmers",
-        "Scalable solution for agricultural applications",
-      ],
-      achievements: "🌾 Participated in Smart India Hackathon 2024",
-      gradient: "from-yellow-500 to-orange-500",
-      category: "AI/ML & Agriculture",
-      githubUrl: "",
-      hasDemo: false,
-    },
-  ];
+  const projects = useMemo(
+    () => [
+      {
+        title:
+          "Kubescape - Kubernetes Anomaly Detection & LLM-based Remediation",
+        shortDescription:
+          "Real-time anomaly detection in Kubernetes clusters with AI-powered remediation system.",
+        fullDescription:
+          "Built a comprehensive multi-agent system for real-time anomaly detection in Kubernetes clusters. Features OOM risk identification, resource exhaustion monitoring, and crash loop detection with automated remediation powered by NVIDIA LLM integration.",
+        technologies: [
+          "Kubernetes",
+          "Python",
+          "Machine Learning",
+          "NVIDIA LLM",
+          "Docker",
+          "Prometheus",
+          "Grafana",
+        ],
+        highlights: [
+          "Real-time anomaly detection using time-series forecasting",
+          "Interactive dashboard with comprehensive metrics visualization",
+          "NVIDIA LLM integration for intelligent root cause analysis",
+          "Automated remediation system with validation and rollback",
+          "Multi-agent architecture for scalable monitoring",
+          "Custom alerting system with severity classification",
+        ],
+        achievements: "🏆 Top 5 Finalist at Guidewire DevTrails 2025",
+        gradient: "from-blue-600 to-purple-600",
+        category: "AI/ML & Cloud",
+        githubUrl:
+          "https://github.com/Sonlux/K8S-Anomaly-Detection-and-Remediation",
+        hasDemo: true,
+        demoUrl: "https://kubescape.vercel.app/",
+      },
+      {
+        title: "TRADEO - Stock Market Prediction & Trading Platform",
+        shortDescription:
+          "Comprehensive stock market prediction platform combining ML models with real-time analysis.",
+        fullDescription:
+          "A comprehensive stock market prediction and trading platform that combines machine learning models with real-time market data analysis. Features Flask backend API with various ML models for market prediction, interactive dashboard, and trading signals generation.",
+        technologies: [
+          "Flask",
+          "TensorFlow",
+          "PyTorch",
+          "XGBoost",
+          "Pandas",
+          "NumPy",
+          "Scikit-learn",
+          "Alpha Vantage API",
+        ],
+        highlights: [
+          "Real-time stock data analysis and visualization",
+          "Multiple ML models for price predictions (LSTM, GRU, XGBoost)",
+          "RESTful API endpoints for stock data integration",
+          "Interactive dashboard with historical data visualization",
+          "Trading signals generation with confidence metrics",
+          "Alpha Vantage and Yahoo Finance API integration",
+          "Flask-CORS enabled for cross-origin requests",
+        ],
+        achievements: "📈 Advanced ML-powered trading platform",
+        gradient: "from-green-600 to-emerald-600",
+        category: "AI/ML & Finance",
+        githubUrl: "https://github.com/Sonlux/TRADEO",
+        hasDemo: true,
+      },
+      {
+        title: "AstroVerse - Interactive 3D Astronomy Platform",
+        shortDescription:
+          "Real-time, interactive astronomy web platform for space enthusiasts and researchers.",
+        fullDescription:
+          "AstroVerse is an ambitious, real-time, and interactive astronomy web platform designed for space enthusiasts, students, educators, and researchers. Features 3D universe mapping, real-time astronomical data integration, and immersive cosmic UI experience.",
+        technologies: [
+          "Next.js",
+          "Three.js",
+          "React-Three-Fiber",
+          "Node.js",
+          "PostgreSQL",
+          "Supabase",
+          "GraphQL",
+          "Framer Motion",
+        ],
+        highlights: [
+          "Interactive 3D universe map with solar system visualization",
+          "Real-time data integration from NASA API and SpaceX API",
+          "Object details on hover with celestial body information",
+          "Dynamic filtering by object type and category",
+          "Personalized bookmarking for celestial events",
+          "Dark cosmic UI with glassmorphism effects",
+          "Responsive design across multiple devices",
+          "GraphQL API with Apollo Server integration",
+        ],
+        achievements: "🌌 Immersive space exploration platform",
+        gradient: "from-purple-600 to-indigo-600",
+        category: "Full-Stack & 3D",
+        githubUrl: "https://github.com/Sonlux/AstroVerse",
+        hasDemo: true,
+      },
+      {
+        title: "E-Commerce Sentiment Analysis",
+        shortDescription:
+          "Advanced sentiment analysis system for e-commerce product reviews and customer feedback.",
+        fullDescription:
+          "Comprehensive sentiment analysis project using natural language processing techniques to analyze e-commerce customer reviews and feedback. Implements various ML algorithms to classify sentiments and extract meaningful insights from customer opinions.",
+        technologies: [
+          "Python",
+          "Jupyter Notebook",
+          "NLTK",
+          "Pandas",
+          "Scikit-learn",
+          "Matplotlib",
+          "Seaborn",
+          "TextBlob",
+        ],
+        highlights: [
+          "Natural language processing for review analysis",
+          "Multiple sentiment classification algorithms",
+          "Customer feedback sentiment scoring",
+          "Data visualization of sentiment trends",
+          "Text preprocessing and feature extraction",
+          "Model performance comparison and evaluation",
+          "Interactive data analysis in Jupyter environment",
+        ],
+        achievements: "💬 NLP-powered customer insights",
+        gradient: "from-orange-600 to-pink-600",
+        category: "AI/ML & NLP",
+        githubUrl: "https://github.com/Sonlux/E-Commerce-Sentiment-Analysis",
+        hasDemo: false,
+      },
+      {
+        title: "AI Road Surface Classification using ESP32 Acoustic System",
+        shortDescription:
+          "Real-time road surface classification using embedded acoustic analysis.",
+        fullDescription:
+          "Developed an innovative embedded system using ESP32 for real-time road surface classification through acoustic pattern recognition, contributing to smart city infrastructure enhancement.",
+        technologies: [
+          "ESP32",
+          "Arduino IDE",
+          "FreeRTOS",
+          "Machine Learning",
+          "Acoustic Processing",
+          "IoT",
+        ],
+        highlights: [
+          "Embedded acoustic systems for real-time road analysis",
+          "Advanced signal processing algorithms for surface classification",
+          "Microphone and vibration sensor integration",
+          "Real-time data processing with FreeRTOS",
+          "Smart city infrastructure enhancement applications",
+          "Edge AI implementation for immediate response",
+        ],
+        achievements: "🌟 Featured in Smart Cities research initiatives",
+        gradient: "from-green-600 to-teal-600",
+        category: "IoT & Embedded",
+        githubUrl: "",
+        hasDemo: false,
+      },
+      {
+        title: "CO₂ & Air Quality Monitoring System",
+        shortDescription:
+          "Real-time environmental monitoring using ESP32 with cloud integration.",
+        fullDescription:
+          "Designed comprehensive environmental KPI monitoring system using ESP32 with specialized sensors for real-time air quality tracking and cloud-based analytics.",
+        technologies: [
+          "ESP32",
+          "MH-Z19E",
+          "MQ-135",
+          "FreeRTOS",
+          "Cloud Computing",
+          "Real-time Analytics",
+        ],
+        highlights: [
+          "Environmental KPI tracking with high precision sensors",
+          "MH-Z19E CO₂ sensor integration for accurate measurements",
+          "MQ-135 air quality sensor for comprehensive monitoring",
+          "Cloud-based data management and storage",
+          "Real-time visualization and analytics dashboard",
+          "Automated alerting for threshold violations",
+        ],
+        achievements: "🌱 Deployed in environmental research projects",
+        gradient: "from-green-500 to-emerald-600",
+        category: "IoT & Environmental",
+        githubUrl: "",
+        hasDemo: false,
+      },
+      {
+        title: "Crop Disease Detection (SIH 2024)",
+        shortDescription:
+          "AI-driven crop disease prediction and management system.",
+        fullDescription:
+          "Ideated Smart Agriculture Forecasting Engine (S.A.F.E) for early crop disease detection using machine learning techniques with image and environmental data analysis.",
+        technologies: [
+          "Python",
+          "Computer Vision",
+          "Machine Learning",
+          "Image Processing",
+          "Agricultural Data",
+        ],
+        highlights: [
+          "Smart Agriculture Forecasting Engine (S.A.F.E) development",
+          "Machine learning for crop health analysis",
+          "Image processing for disease pattern recognition",
+          "Environmental data integration for comprehensive analysis",
+          "Early warning system for farmers",
+          "Scalable solution for agricultural applications",
+        ],
+        achievements: "🌾 Participated in Smart India Hackathon 2024",
+        gradient: "from-yellow-500 to-orange-500",
+        category: "AI/ML & Agriculture",
+        githubUrl: "",
+        hasDemo: false,
+      },
+    ],
+    []
+  );
 
   const toggleExpand = (index: number) => {
     setExpandedProject(expandedProject === index ? null : index);
@@ -247,6 +251,34 @@ const Projects = () => {
     console.log(`Opening demo for ${project.title}`);
   };
 
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [visibleCards, setVisibleCards] = useState<boolean[]>(() =>
+    projects.map(() => false)
+  );
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+    projects.forEach((_, i) => {
+      if (!cardRefs.current[i]) return;
+      const observer = new window.IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setVisibleCards((prev) => {
+              const updated = [...prev];
+              updated[i] = true;
+              return updated;
+            });
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.15 }
+      );
+      observer.observe(cardRefs.current[i]!);
+      observers.push(observer);
+    });
+    return () => observers.forEach((obs) => obs.disconnect());
+  }, [projects]);
+
   return (
     <section id="projects" className="py-24 relative overflow-hidden">
       {/* Cyberpunk background elements */}
@@ -260,7 +292,8 @@ const Projects = () => {
           </h2>
           <div className="w-20 h-0.5 bg-gradient-to-r from-pink-500 to-cyan-500 mx-auto mb-8" />
           <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
-            Innovative solutions spanning AI/ML, IoT, Cloud Computing, and Real-time Systems
+            Innovative solutions spanning AI/ML, IoT, Cloud Computing, and
+            Real-time Systems
           </p>
         </div>
 
@@ -268,7 +301,10 @@ const Projects = () => {
           {projects.map((project, index) => (
             <Card
               key={index}
-              className="cyber-card group border-0 cyber-fade-in"
+              ref={(el) => (cardRefs.current[index] = el)}
+              className={`cyber-card group border-0 cyber-fade-in${
+                visibleCards[index] ? " visible" : ""
+              }`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className={`h-1 bg-gradient-to-r ${project.gradient}`}></div>
@@ -297,7 +333,7 @@ const Projects = () => {
               </CardHeader>
               <CardContent className="space-y-4">
                 {expandedProject === index && (
-                  <div className="space-y-3 cyber-fade-in">
+                  <div className="space-y-3 cyber-fade-in visible">
                     <h4 className="font-medium text-white flex items-center">
                       <div
                         className={`w-3 h-3 rounded-full bg-gradient-to-r ${project.gradient} mr-2 cyber-glow`}
