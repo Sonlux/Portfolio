@@ -213,12 +213,12 @@ const Hero = () => {
               onClick={() => {
                 const link = document.createElement("a");
                 link.href = "/resume.pdf";
-                link.download = "Lakshan_AS_Resume.pdf";
+                link.download = "Lakshan_CV.pdf";
                 link.click();
               }}
             >
               <Download className="w-4 h-4 mr-2" />
-              Download Resume
+              Download CV
             </Button>
 
             <Button
