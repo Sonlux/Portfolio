@@ -8,7 +8,7 @@ const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
   
-  const roles = ['UI/UX Designer', 'Creative Artist', 'Digital Craftsman', 'Visual Storyteller', 'Design Innovator'];
+  const roles = ['Full Stack Developer', 'AI/ML Engineer', 'Creative Problem Solver', 'Tech Innovator', 'Software Architect'];
 
   useEffect(() => {
     setIsLoaded(true);
@@ -74,11 +74,11 @@ const Hero = () => {
           
           <div className="text-lg text-slate-500 max-w-4xl mx-auto mb-12 leading-relaxed font-light">
             <span className="slide-in-elegant visible">
-              Crafting beautiful digital experiences through{' '}
-              <span className="text-slate-700 font-medium">thoughtful design</span>,{' '}
-              <span className="text-slate-700 font-medium">innovative solutions</span>, and{' '}
-              <span className="text-slate-700 font-medium">artistic vision</span>.
-              Transforming ideas into elegant, user-centered designs.
+              Passionate about creating innovative solutions through{' '}
+              <span className="text-slate-700 font-medium">cutting-edge technology</span>,{' '}
+              <span className="text-slate-700 font-medium">machine learning</span>, and{' '}
+              <span className="text-slate-700 font-medium">full-stack development</span>.
+              Transforming ideas into scalable, impactful applications.
             </span>
           </div>
           

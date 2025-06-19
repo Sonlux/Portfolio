@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Palette, Code, Database, Zap, Layers, Sparkles } from 'lucide-react';
+import { Code, Database, Zap, Layers, Sparkles, Brain } from 'lucide-react';
 
 const Skills = () => {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -11,25 +11,14 @@ const Skills = () => {
 
   const skillCategories = [
     {
-      id: 'design',
-      title: "Design & Creative",
-      skills: [
-        { name: "UI/UX Design", level: 95, icon: "🎨", gradient: "from-pink-400 to-rose-400" },
-        { name: "Figma", level: 90, icon: "📐", gradient: "from-purple-400 to-violet-400" },
-        { name: "Adobe Creative Suite", level: 85, icon: "🖌️", gradient: "from-blue-400 to-cyan-400" },
-        { name: "Prototyping", level: 88, icon: "⚡", gradient: "from-green-400 to-emerald-400" }
-      ],
-      gradient: "from-pink-500 to-rose-500",
-      bgIcon: Palette
-    },
-    {
       id: 'frontend',
       title: "Frontend Development",
       skills: [
         { name: "React", level: 92, icon: "⚛️", gradient: "from-cyan-400 to-blue-400" },
         { name: "JavaScript", level: 90, icon: "⚡", gradient: "from-yellow-400 to-orange-400" },
         { name: "TypeScript", level: 85, icon: "📘", gradient: "from-blue-400 to-indigo-400" },
-        { name: "Tailwind CSS", level: 95, icon: "🎨", gradient: "from-teal-400 to-cyan-400" }
+        { name: "Tailwind CSS", level: 95, icon: "🎨", gradient: "from-teal-400 to-cyan-400" },
+        { name: "Next.js", level: 88, icon: "▲", gradient: "from-gray-600 to-gray-800" }
       ],
       gradient: "from-blue-500 to-cyan-500",
       bgIcon: Code
@@ -41,10 +30,24 @@ const Skills = () => {
         { name: "Python", level: 88, icon: "🐍", gradient: "from-green-400 to-emerald-400" },
         { name: "Node.js", level: 82, icon: "🟢", gradient: "from-green-500 to-teal-500" },
         { name: "MySQL", level: 85, icon: "🗄️", gradient: "from-orange-400 to-red-400" },
-        { name: "MongoDB", level: 80, icon: "🍃", gradient: "from-green-500 to-lime-500" }
+        { name: "MongoDB", level: 80, icon: "🍃", gradient: "from-green-500 to-lime-500" },
+        { name: "Flask", level: 85, icon: "🌶️", gradient: "from-red-400 to-pink-400" }
       ],
       gradient: "from-green-500 to-emerald-500",
       bgIcon: Database
+    },
+    {
+      id: 'aiml',
+      title: "AI & Machine Learning",
+      skills: [
+        { name: "TensorFlow", level: 85, icon: "🧠", gradient: "from-orange-400 to-red-500" },
+        { name: "PyTorch", level: 82, icon: "🔥", gradient: "from-red-500 to-pink-500" },
+        { name: "Scikit-learn", level: 88, icon: "📊", gradient: "from-blue-400 to-purple-400" },
+        { name: "OpenCV", level: 80, icon: "👁️", gradient: "from-green-400 to-blue-400" },
+        { name: "Pandas", level: 90, icon: "🐼", gradient: "from-purple-400 to-indigo-400" }
+      ],
+      gradient: "from-purple-500 to-pink-500",
+      bgIcon: Brain
     },
     {
       id: 'tools',
@@ -53,7 +56,8 @@ const Skills = () => {
         { name: "Git & GitHub", level: 90, icon: "🐙", gradient: "from-gray-600 to-gray-800" },
         { name: "AWS", level: 75, icon: "☁️", gradient: "from-orange-400 to-yellow-400" },
         { name: "Docker", level: 80, icon: "🐳", gradient: "from-blue-400 to-teal-400" },
-        { name: "Kubernetes", level: 78, icon: "☸️", gradient: "from-blue-500 to-cyan-500" }
+        { name: "Kubernetes", level: 78, icon: "☸️", gradient: "from-blue-500 to-cyan-500" },
+        { name: "Linux", level: 85, icon: "🐧", gradient: "from-yellow-400 to-orange-500" }
       ],
       gradient: "from-indigo-500 to-purple-500",
       bgIcon: Layers
@@ -62,9 +66,9 @@ const Skills = () => {
 
   const categories = [
     { id: 'all', name: 'All Skills', icon: '🚀' },
-    { id: 'design', name: 'Design', icon: '🎨' },
     { id: 'frontend', name: 'Frontend', icon: '⚡' },
     { id: 'backend', name: 'Backend', icon: '🗄️' },
+    { id: 'aiml', name: 'AI/ML', icon: '🤖' },
     { id: 'tools', name: 'Tools', icon: '🛠️' }
   ];
 
@@ -98,11 +102,11 @@ const Skills = () => {
             ref={titleRef}
             className={`text-5xl font-display font-light text-slate-800 mb-6 elegant-text ${titleVisible ? 'fade-in-elegant visible' : 'fade-in-elegant'}`}
           >
-            Creative Skills
+            Technical Skills
           </h2>
           <div className="w-20 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mb-8" />
           <p className="text-xl text-slate-600 font-light max-w-2xl mx-auto">
-            A blend of creativity and technical expertise
+            A comprehensive toolkit for building innovative solutions
           </p>
           
           {/* Enhanced Category Filter */}
@@ -136,7 +140,7 @@ const Skills = () => {
               className="artistic-card group border-0 h-full flex items-center justify-center"
               style={{ 
                 animationDelay: `${index * 150}ms`,
-                minHeight: "300px"
+                minHeight: "350px"
               }}
             >
               <CardContent className="p-8 relative z-10 text-center">

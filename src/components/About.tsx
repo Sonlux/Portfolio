@@ -27,7 +27,7 @@ const About = () => {
     {
       value: "5+",
       label: "Certifications",
-      description: "AWS & Design",
+      description: "AWS & Tech",
       icon: Award,
       gradient: "from-green-500 to-emerald-500",
     },
@@ -71,7 +71,7 @@ const About = () => {
           </h2>
           <div className="w-20 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mb-8" />
           <p className="text-xl text-slate-600 font-light max-w-2xl mx-auto">
-            Crafting digital experiences with passion and precision
+            Crafting innovative solutions with passion and precision
           </p>
         </div>
 
@@ -85,13 +85,13 @@ const About = () => {
             <CardContent className="p-0">
               <div className="space-y-6 text-artistic">
                 <p className="text-lg leading-relaxed">
-                  I'm currently pursuing my <span className="font-medium text-slate-700">B.Tech in Computer Science Engineering</span> with a specialization in <span className="font-medium text-slate-700">AI & ML</span>, maintaining an impressive <span className="font-medium text-slate-700">8.07 CGPA</span>. My journey combines technical expertise with creative vision.
+                  I'm currently pursuing my <span className="font-medium text-slate-700">B.Tech in Computer Science Engineering</span> with a specialization in <span className="font-medium text-slate-700">AI & ML</span>, maintaining an impressive <span className="font-medium text-slate-700">8.07 CGPA</span>. My journey combines technical expertise with innovative problem-solving.
                 </p>
                 <p className="text-lg leading-relaxed">
-                  Passionate about creating impactful digital experiences, I specialize in <span className="font-medium text-slate-700">UI/UX Design</span>, <span className="font-medium text-slate-700">Creative Development</span>, and <span className="font-medium text-slate-700">Innovative Solutions</span>. My approach bridges aesthetic beauty with functional excellence.
+                  Passionate about creating impactful digital solutions, I specialize in <span className="font-medium text-slate-700">Full-Stack Development</span>, <span className="font-medium text-slate-700">Machine Learning</span>, and <span className="font-medium text-slate-700">Cloud Computing</span>. My approach bridges cutting-edge technology with practical applications.
                 </p>
                 <p className="text-lg leading-relaxed">
-                  Recognized as a <span className="font-medium elegant-text">Creative Innovator</span> and <span className="font-medium elegant-text">Design Thinker</span>, I combine artistic vision with technical precision to create experiences that inspire and engage users on a deeper level.
+                  Recognized as a <span className="font-medium elegant-text">Tech Innovator</span> and <span className="font-medium elegant-text">Problem Solver</span>, I combine analytical thinking with creative solutions to build applications that make a real difference in people's lives.
                 </p>
               </div>
             </CardContent>
@@ -126,28 +126,28 @@ const About = () => {
         {/* Enhanced Focus Areas */}
         <div className="mt-20">
           <h3 className="text-4xl font-display font-light text-slate-800 text-center mb-16 elegant-text">
-            Creative Focus Areas
+            Technical Focus Areas
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: "UI/UX Design",
-                description: "Creating intuitive, beautiful interfaces that delight users and enhance their digital journey",
-                icon: "🎨",
+                title: "Full Stack Development",
+                description: "Building end-to-end applications with modern frameworks and scalable architectures",
+                icon: "💻",
                 gradient: "from-blue-50 to-indigo-50",
                 border: "from-blue-200 to-indigo-200",
               },
               {
-                title: "Creative Development",
-                description: "Bridging design and code to bring artistic visions to life with technical excellence",
-                icon: "💻",
+                title: "AI & Machine Learning",
+                description: "Developing intelligent systems and predictive models for real-world applications",
+                icon: "🤖",
                 gradient: "from-purple-50 to-pink-50",
                 border: "from-purple-200 to-pink-200",
               },
               {
-                title: "Design Innovation",
-                description: "Pushing boundaries of digital creativity with cutting-edge design solutions and fresh perspectives",
-                icon: "✨",
+                title: "Cloud & DevOps",
+                description: "Deploying scalable solutions with modern cloud technologies and automation",
+                icon: "☁️",
                 gradient: "from-green-50 to-emerald-50",
                 border: "from-green-200 to-emerald-200",
               },
