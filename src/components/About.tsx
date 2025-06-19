@@ -1,42 +1,42 @@
+
 import React, { useEffect, useRef, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Zap, Target, Rocket, Brain } from "lucide-react";
+import { Zap, Target, Rocket, Brain, Palette, Award } from "lucide-react";
 
 const About = () => {
   const [visibleElements, setVisibleElements] = useState<Set<number>>(
     new Set()
   );
   const observerRef = useRef<IntersectionObserver | null>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const stats = [
     {
       value: "8.07",
       label: "CGPA",
-      color: "blue",
       description: "Academic Excellence",
       icon: Brain,
+      gradient: "from-blue-500 to-indigo-500",
     },
     {
       value: "8+",
       label: "Major Projects",
-      color: "purple",
-      description: "Real-World Impact",
-      icon: Rocket,
+      description: "Creative Solutions",
+      icon: Palette,
+      gradient: "from-purple-500 to-pink-500",
     },
     {
       value: "5+",
       label: "Certifications",
-      color: "green",
-      description: "AWS & AI/ML",
-      icon: Target,
+      description: "AWS & Design",
+      icon: Award,
+      gradient: "from-green-500 to-emerald-500",
     },
     {
       value: "3+",
       label: "Hackathons",
-      color: "orange",
       description: "Top 5 Finalist",
       icon: Zap,
+      gradient: "from-orange-500 to-red-500",
     },
   ];
 
@@ -58,189 +58,122 @@ const About = () => {
     return () => observerRef.current?.disconnect();
   }, []);
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
-  const magneticStyle = (strength: number = 0.02) => ({
-    transform: `translate(${
-      (mousePosition.x - window.innerWidth / 2) * strength
-    }px, ${(mousePosition.y - window.innerHeight / 2) * strength}px)`,
-  });
-
   return (
-    <section id="about" className="py-20 bg-slate-50 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0">
-        <div className="cyber-grid opacity-20" />
-        <div className="floating-element absolute top-10 right-10 w-20 h-20 bg-gradient-to-r from-blue-400 to-purple-600 rounded-full opacity-20" />
-        <div
-          className="floating-element absolute bottom-20 left-10 w-16 h-16 bg-gradient-to-r from-green-400 to-teal-600 rounded-full opacity-20"
-          style={{ animationDelay: "2s" }}
-        />
-      </div>
+    <section id="about" className="py-24 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
+      {/* Artistic background elements */}
+      <div className="artistic-bg absolute inset-0" />
+      <div className="elegant-grid absolute inset-0" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <h2
-            className="text-4xl font-bold text-gray-900 mb-4 holographic-text"
-            style={magneticStyle(0.01)}
-          >
+        <div className="text-center mb-20">
+          <h2 className="text-5xl font-display font-light text-slate-800 mb-6 elegant-text">
             About Me
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto" />
+          <div className="w-20 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mb-8" />
+          <p className="text-xl text-slate-600 font-light max-w-2xl mx-auto">
+            Crafting digital experiences with passion and precision
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* About Me Card */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+          {/* About Me Content */}
           <Card
-            className={`morphing-card hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 border-0 bg-gradient-to-br from-white to-gray-50 group overflow-hidden h-full flex items-center justify-center`}
+            className="artistic-card group h-full flex items-center justify-center p-8 border-0"
             data-index={0}
-            style={{ ...magneticStyle(0.01), minHeight: "220px" }}
+            ref={(el) => el && observerRef.current?.observe(el)}
           >
-            <CardContent className="p-6 flex flex-col justify-center h-full">
-              <p className="text-gray-700 leading-relaxed text-base mb-2">
-                Passionate about building impactful tech, I specialize in
-                Embedded Systems, AI/ML, and Cloud. My journey spans real-time
-                IoT monitoring, Kubernetes-based anomaly detection, and
-                AI-powered analytics—bridging hardware and software for
-                real-world solutions. I enjoy working on projects that challenge
-                me to think creatively and push the boundaries of technology. My
-                approach is hands-on, detail-oriented, and always focused on
-                delivering value.
-              </p>
-              <p className="text-gray-700 leading-relaxed text-base">
-                Recognized as an{" "}
-                <span className="font-semibold holographic-text">
-                  Embedded Innovator
-                </span>{" "}
-                and{" "}
-                <span className="font-semibold holographic-text">
-                  Cloud Native Developer
-                </span>
-                , I combine hands-on engineering with leadership in student
-                organizations. I’m driven to create, collaborate, and innovate
-                for a smarter, connected future. I value teamwork, continuous
-                learning, and making a positive impact through technology.
-              </p>
+            <CardContent className="p-0">
+              <div className="space-y-6 text-artistic">
+                <p className="text-lg leading-relaxed">
+                  I'm currently pursuing my <span className="font-medium text-slate-700">B.Tech in Computer Science Engineering</span> with a specialization in <span className="font-medium text-slate-700">AI & ML</span>, maintaining an impressive <span className="font-medium text-slate-700">8.07 CGPA</span>. My journey combines technical expertise with creative vision.
+                </p>
+                <p className="text-lg leading-relaxed">
+                  Passionate about creating impactful digital experiences, I specialize in <span className="font-medium text-slate-700">UI/UX Design</span>, <span className="font-medium text-slate-700">Creative Development</span>, and <span className="font-medium text-slate-700">Innovative Solutions</span>. My approach bridges aesthetic beauty with functional excellence.
+                </p>
+                <p className="text-lg leading-relaxed">
+                  Recognized as a <span className="font-medium elegant-text">Creative Innovator</span> and <span className="font-medium elegant-text">Design Thinker</span>, I combine artistic vision with technical precision to create experiences that inspire and engage users on a deeper level.
+                </p>
+              </div>
             </CardContent>
           </Card>
+
           {/* Enhanced stats grid */}
           <div className="grid grid-cols-2 gap-6">
             {stats.map((stat, index) => (
               <Card
                 key={index}
-                className={`morphing-card hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 border-0 bg-gradient-to-br from-white to-gray-50 group overflow-hidden h-full flex items-center justify-center`}
+                className="artistic-card group h-40 flex items-center justify-center border-0"
                 data-index={index + 1}
                 ref={(el) => el && observerRef.current?.observe(el)}
-                style={{
-                  ...magneticStyle(0.01),
-                  animationDelay: `${index * 0.1}s`,
-                  minHeight: "220px",
-                }}
               >
-                <CardContent className="p-6 text-center relative flex flex-col justify-center h-full">
-                  {/* Animated background effect */}
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-r from-${stat.color}-400/20 to-${stat.color}-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-                  />
-
-                  {/* Icon with advanced animation */}
-                  <div className="relative mb-4">
-                    <stat.icon
-                      className={`w-8 h-8 text-${stat.color}-600 mx-auto group-hover:scale-125 transition-transform duration-500 group-hover:rotate-12`}
-                    />
+                <CardContent className="p-6 text-center">
+                  <div className="mb-4">
+                    <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${stat.gradient} flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-500`}>
+                      <stat.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <div className={`text-3xl font-display font-medium bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent`}>
+                      {stat.value}
+                    </div>
                   </div>
-                  <div
-                    className={`text-4xl font-bold text-${stat.color}-600 mb-2 group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    {stat.value}
-                  </div>
-                  <div className="text-lg font-semibold mb-1">{stat.label}</div>
-                  <div className="text-gray-500 text-sm">
-                    {stat.description}
-                  </div>
+                  <div className="text-sm font-medium text-slate-700 mb-1">{stat.label}</div>
+                  <div className="text-xs text-slate-500">{stat.description}</div>
                 </CardContent>
               </Card>
             ))}
           </div>
         </div>
 
-        {/* Enhanced Core Values Section */}
+        {/* Enhanced Focus Areas */}
         <div className="mt-20">
-          <h3
-            className="text-3xl font-bold text-gray-900 text-center mb-12 holographic-text"
-            style={magneticStyle(0.01)}
-          >
-            Core Focus Areas
+          <h3 className="text-4xl font-display font-light text-slate-800 text-center mb-16 elegant-text">
+            Creative Focus Areas
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: "Smart Cities & Automation",
-                description:
-                  "Building intelligent systems for urban infrastructure and automated decision-making processes",
-                gradient:
-                  "from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200",
-                icon: "🤖",
-                color: "blue",
+                title: "UI/UX Design",
+                description: "Creating intuitive, beautiful interfaces that delight users and enhance their digital journey",
+                icon: "🎨",
+                gradient: "from-blue-50 to-indigo-50",
+                border: "from-blue-200 to-indigo-200",
               },
               {
-                title: "AI-for-Good",
-                description:
-                  "Leveraging artificial intelligence for environmental monitoring and positive social impact",
-                gradient:
-                  "from-green-50 to-green-100 hover:from-green-100 hover:to-green-200",
-                icon: "🌍",
-                color: "green",
+                title: "Creative Development",
+                description: "Bridging design and code to bring artistic visions to life with technical excellence",
+                icon: "💻",
+                gradient: "from-purple-50 to-pink-50",
+                border: "from-purple-200 to-pink-200",
               },
               {
-                title: "Cloud & Edge Computing",
-                description:
-                  "Scalable cloud infrastructure and real-time processing at the network edge",
-                gradient:
-                  "from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200",
-                icon: "☁️",
-                color: "purple",
+                title: "Design Innovation",
+                description: "Pushing boundaries of digital creativity with cutting-edge design solutions and fresh perspectives",
+                icon: "✨",
+                gradient: "from-green-50 to-emerald-50",
+                border: "from-green-200 to-emerald-200",
               },
             ].map((area, index) => (
               <div
                 key={index}
-                className={`morphing-card text-center p-8 rounded-xl bg-gradient-to-br ${area.gradient} transition-all duration-500 hover:scale-105 group relative overflow-hidden`}
+                className={`artistic-card p-8 text-center bg-gradient-to-br ${area.gradient} border border-transparent bg-clip-padding relative overflow-hidden`}
                 style={{
-                  ...magneticStyle(0.005),
                   animationDelay: `${index * 0.2}s`,
                 }}
               >
-                {/* Animated background pattern */}
-                <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
-                  <div className="cyber-grid" />
+                <div className={`absolute inset-0 bg-gradient-to-r ${area.border} opacity-20 rounded-lg`} />
+                
+                <div className="relative z-10">
+                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <span className="text-2xl">{area.icon}</span>
+                  </div>
+
+                  <h4 className="font-display text-xl font-medium text-slate-800 mb-4">
+                    {area.title}
+                  </h4>
+
+                  <p className="text-slate-600 leading-relaxed font-light">
+                    {area.description}
+                  </p>
                 </div>
-
-                <div
-                  className={`w-16 h-16 bg-gradient-to-r from-${area.color}-500 to-${area.color}-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-500`}
-                >
-                  <span className="text-white font-bold text-2xl">
-                    {area.icon}
-                  </span>
-                </div>
-
-                <h4 className="font-semibold text-gray-900 mb-3 text-lg group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
-                  {area.title}
-                </h4>
-
-                <p className="text-sm text-gray-600 relative z-10 leading-relaxed">
-                  {area.description}
-                </p>
-
-                {/* Hover effect overlay */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-r from-${area.color}-400/10 to-${area.color}-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl`}
-                />
               </div>
             ))}
           </div>
