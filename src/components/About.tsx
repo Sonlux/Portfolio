@@ -98,43 +98,38 @@ const About = () => {
           >
             <CardContent className="p-0">
               <div className="space-y-6 cyber-text-body">
-                <p className="text-lg leading-relaxed text-gray-300">
+                <p className="text-lg leading-relaxed text-white">
                   I'm currently pursuing my{" "}
-                  <span className="font-medium text-pink-400">
-                    B.Tech in Computer Science Engineering
-                  </span>{" "}
-                  with a specialization in{" "}
-                  <span className="font-medium text-cyan-400">AI & ML</span>,
-                  maintaining an impressive{" "}
-                  <span className="font-medium text-purple-400">8.07 CGPA</span>
-                  . My journey combines technical expertise with innovative
-                  problem-solving.
+                  <b>B.Tech in Electronics and Computer Engineering</b>. I enjoy
+                  working at the intersection of hardware and intelligence,
+                  blending embedded systems with modern AI technologies.
                 </p>
-                <p className="text-lg leading-relaxed text-gray-300">
-                  Passionate about creating impactful digital solutions, I
-                  specialize in{" "}
-                  <span className="font-medium text-pink-400">
-                    Full-Stack Development
-                  </span>
+                <p className="text-lg leading-relaxed text-white">
+                  With a focus on practical, socially impactful innovation, I
+                  explore areas like{" "}
+                  <span className="text-cyan-400 font-bold">Generative AI</span>
                   ,{" "}
-                  <span className="font-medium text-cyan-400">
+                  <span className="text-blue-400 font-bold">
                     Machine Learning
                   </span>
-                  , and{" "}
-                  <span className="font-medium text-purple-400">
-                    Cloud Computing
+                  ,{" "}
+                  <span className="text-green-400 font-bold">
+                    Embedded Development (ESP32, microcontrollers)
                   </span>
-                  . My approach bridges cutting-edge technology with practical
-                  applications.
+                  ,{" "}
+                  <span className="text-pink-400 font-bold">
+                    Cloud Computing (AWS)
+                  </span>
+                  , and{" "}
+                  <span className="text-purple-400 font-bold">Kubernetes</span>.
+                  My projects range from real-time anomaly detection in clusters
+                  to environment-aware systems and early-stage efforts in
+                  transportation safety using intelligent sensing.
                 </p>
-                <p className="text-lg leading-relaxed text-gray-300">
-                  Recognized as a{" "}
-                  <span className="font-medium cyber-text">Tech Innovator</span>{" "}
-                  and{" "}
-                  <span className="font-medium cyber-text">Problem Solver</span>
-                  , I combine analytical thinking with creative solutions to
-                  build applications that make a real difference in people's
-                  lives.
+                <p className="text-lg leading-relaxed text-white">
+                  Recognized for my problem-solving mindset, I strive to build
+                  meaningful, responsible tech solutions that address everyday
+                  challenges through thoughtful engineering.
                 </p>
               </div>
             </CardContent>
