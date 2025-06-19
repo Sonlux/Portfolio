@@ -59,12 +59,18 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-slate-900">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4">Get In Touch</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+    <section id="contact" className="py-24 relative overflow-hidden">
+      {/* Cyberpunk background elements */}
+      <div className="cyber-bg absolute inset-0" />
+      <div className="cyber-grid absolute inset-0" />
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl font-display cyber-heading cyber-text mb-6">
+            Get In Touch
+          </h2>
+          <div className="w-20 h-0.5 bg-gradient-to-r from-pink-500 to-cyan-500 mx-auto mb-8" />
+          <p className="text-xl text-gray-300 font-light max-w-2xl mx-auto">
             Ready to collaborate on innovative projects or discuss
             opportunities? Let's connect and create something amazing together.
           </p>
@@ -74,17 +80,17 @@ const Contact = () => {
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-white mb-6">
+              <h3 className="text-3xl font-display cyber-heading text-white mb-6">
                 Contact Information
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {contactInfo.map((info, index) => (
                   <a key={index} href={info.href} className="group block">
-                    <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+                    <Card className="cyber-card border-0 group-hover:scale-105 transition-all duration-300">
                       <CardContent className="p-4">
                         <div className="flex items-center space-x-3">
                           <div
-                            className={`w-10 h-10 rounded-lg bg-gradient-to-r ${info.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                            className={`w-10 h-10 rounded-lg bg-gradient-to-r ${info.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 cyber-glow`}
                           >
                             <info.icon className="w-5 h-5 text-white" />
                           </div>
@@ -106,7 +112,7 @@ const Contact = () => {
 
             {/* Social Links */}
             <div>
-              <h3 className="text-xl font-bold text-white mb-4">
+              <h3 className="text-xl font-display font-medium text-white mb-4">
                 Connect With Me
               </h3>
               <div className="flex space-x-4">
@@ -114,7 +120,7 @@ const Contact = () => {
                   href="https://www.linkedin.com/in/lakshan2810/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
+                  className="cyber-card w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 cyber-glow"
                 >
                   <Linkedin className="w-6 h-6 text-white" />
                 </a>
@@ -122,13 +128,13 @@ const Contact = () => {
                   href="https://github.com/Sonlux"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 bg-gradient-to-r from-gray-700 to-gray-900 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
+                  className="cyber-card w-12 h-12 bg-gradient-to-r from-gray-700 to-gray-900 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 cyber-glow"
                 >
                   <Github className="w-6 h-6 text-white" />
                 </a>
                 <a
                   href="mailto:lakshanamineni@gmail.com"
-                  className="w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
+                  className="cyber-card w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 cyber-glow"
                 >
                   <Mail className="w-6 h-6 text-white" />
                 </a>
@@ -137,9 +143,9 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+          <Card className="cyber-card border-0">
             <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white">
+              <CardTitle className="text-2xl font-display font-medium text-white">
                 Send a Message
               </CardTitle>
             </CardHeader>
@@ -152,7 +158,7 @@ const Contact = () => {
                       placeholder="Your Name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                      className="cyber-card bg-gray-800/50 border-gray-700/50 text-white placeholder:text-gray-400 focus:border-cyan-400"
                       required
                     />
                   </div>
@@ -163,7 +169,7 @@ const Contact = () => {
                       placeholder="Your Email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                      className="cyber-card bg-gray-800/50 border-gray-700/50 text-white placeholder:text-gray-400 focus:border-cyan-400"
                       required
                     />
                   </div>
@@ -174,7 +180,7 @@ const Contact = () => {
                     placeholder="Subject"
                     value={formData.subject}
                     onChange={handleInputChange}
-                    className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                    className="cyber-card bg-gray-800/50 border-gray-700/50 text-white placeholder:text-gray-400 focus:border-cyan-400"
                     required
                   />
                 </div>
@@ -185,13 +191,13 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     rows={5}
-                    className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 resize-none"
+                    className="cyber-card bg-gray-800/50 border-gray-700/50 text-white placeholder:text-gray-400 resize-none focus:border-cyan-400"
                     required
                   />
                 </div>
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0 transition-all duration-300 hover:scale-105"
+                  className="w-full cyber-button bg-gradient-to-r from-pink-600 to-cyan-600 hover:from-pink-500 hover:to-cyan-500 text-white border-0 transition-all duration-300 hover:scale-105"
                 >
                   <Send className="w-4 h-4 mr-2" />
                   Send Message

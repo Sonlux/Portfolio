@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -72,39 +71,55 @@ const Experience = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Experience & Education</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+    <section className="py-24 relative overflow-hidden">
+      {/* Cyberpunk background elements */}
+      <div className="cyber-bg absolute inset-0" />
+      <div className="cyber-grid absolute inset-0" />
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl font-display cyber-heading cyber-text mb-6">
+            Experience & Education
+          </h2>
+          <div className="w-20 h-0.5 bg-gradient-to-r from-pink-500 to-cyan-500 mx-auto mb-8" />
+          <p className="text-xl text-gray-300 font-light max-w-2xl mx-auto">
+            Professional journey and academic excellence
+          </p>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Experience Section */}
           <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mr-3"></div>
+            <h3 className="text-3xl font-display cyber-heading text-white mb-8 flex items-center">
+              <div className="w-3 h-3 bg-gradient-to-r from-pink-500 to-cyan-500 rounded-full mr-3 cyber-glow"></div>
               Professional Experience
             </h3>
             <div className="space-y-6">
               {experiences.map((exp, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow duration-300 border-l-4 border-l-transparent hover:border-l-blue-500">
+                <Card 
+                  key={index} 
+                  className="cyber-card border-0 cyber-fade-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
                   <CardHeader className="pb-3">
                     <div className="flex justify-between items-start mb-2">
-                      <CardTitle className="text-lg font-semibold text-gray-900">{exp.title}</CardTitle>
-                      <Badge variant="outline" className={`bg-gradient-to-r ${exp.color} text-white border-0`}>
+                      <CardTitle className="text-lg font-medium text-white">{exp.title}</CardTitle>
+                      <Badge 
+                        variant="outline" 
+                        className={`cyber-card bg-gradient-to-r ${exp.color} text-white border-0 px-3 py-1`}
+                      >
                         {exp.type}
                       </Badge>
                     </div>
-                    <div className="text-blue-600 font-medium">{exp.company}</div>
-                    <div className="text-sm text-gray-500">{exp.location} • {exp.period}</div>
+                    <div className="text-cyan-400 font-medium">{exp.company}</div>
+                    <div className="text-sm text-gray-400">{exp.location} • {exp.period}</div>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2">
                       {exp.responsibilities.map((resp, respIndex) => (
                         <li key={respIndex} className="flex items-start space-x-2">
                           <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${exp.color} mt-2 flex-shrink-0`}></div>
-                          <span className="text-sm text-gray-700">{resp}</span>
+                          <span className="text-sm text-gray-300 cyber-text-body">{resp}</span>
                         </li>
                       ))}
                     </ul>
@@ -116,19 +131,26 @@ const Experience = () => {
           
           {/* Education Section */}
           <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center">
-              <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-teal-500 rounded-full mr-3"></div>
+            <h3 className="text-3xl font-display cyber-heading text-white mb-8 flex items-center">
+              <div className="w-3 h-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mr-3 cyber-glow"></div>
               Education
             </h3>
             <div className="space-y-6">
               {education.map((edu, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow duration-300 border-l-4 border-l-transparent hover:border-l-green-500">
+                <Card 
+                  key={index} 
+                  className="cyber-card border-0 cyber-fade-in"
+                  style={{ animationDelay: `${index * 0.15}s` }}
+                >
                   <CardHeader>
-                    <CardTitle className="text-lg font-semibold text-gray-900">{edu.degree}</CardTitle>
-                    <div className="text-green-600 font-medium">{edu.institution}</div>
+                    <CardTitle className="text-lg font-medium text-white leading-tight">{edu.degree}</CardTitle>
+                    <div className="text-pink-400 font-medium">{edu.institution}</div>
                     <div className="flex justify-between items-center">
-                      <div className="text-sm text-gray-500">{edu.period}</div>
-                      <Badge variant="outline" className={`bg-gradient-to-r ${edu.color} text-white border-0`}>
+                      <div className="text-sm text-gray-400">{edu.period}</div>
+                      <Badge 
+                        variant="outline" 
+                        className={`cyber-card bg-gradient-to-r ${edu.color} text-white border-0 px-3 py-1`}
+                      >
                         {edu.cgpa}
                       </Badge>
                     </div>

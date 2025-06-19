@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -48,28 +47,39 @@ const Achievements = () => {
   ];
 
   return (
-    <section className="py-20 bg-slate-50">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Achievements & Certifications</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+    <section className="py-24 relative overflow-hidden">
+      {/* Cyberpunk background elements */}
+      <div className="cyber-bg absolute inset-0" />
+      <div className="cyber-grid absolute inset-0" />
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl font-display cyber-heading cyber-text mb-6">
+            Achievements & Certifications
+          </h2>
+          <div className="w-20 h-0.5 bg-gradient-to-r from-pink-500 to-cyan-500 mx-auto mb-8" />
+          <p className="text-xl text-gray-300 font-light max-w-2xl mx-auto">
+            Recognition and continuous learning journey
+          </p>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
           {/* Certifications */}
-          <Card className="hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+          <Card className="cyber-card border-0 cyber-fade-in">
             <CardHeader className="text-center pb-4">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 cyber-glow">
                 <Award className="w-8 h-8 text-white" />
               </div>
-              <CardTitle className="text-xl font-bold text-gray-900">Certifications</CardTitle>
+              <CardTitle className="text-xl font-display font-medium text-white">Certifications</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
                 {certifications.map((cert, index) => (
-                  <div key={index} className="flex items-start space-x-3 p-3 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 hover:from-blue-100 hover:to-purple-100 transition-all duration-300">
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 mt-2 flex-shrink-0"></div>
-                    <span className="text-sm text-gray-700 font-medium">{cert}</span>
+                  <div key={index} className="cyber-card p-3 rounded-lg transition-all duration-300 hover:scale-105">
+                    <div className="flex items-start space-x-3">
+                      <div className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 mt-2 flex-shrink-0"></div>
+                      <span className="text-sm text-gray-300 font-medium cyber-text-body">{cert}</span>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -77,44 +87,44 @@ const Achievements = () => {
           </Card>
 
           {/* Hackathons Summary */}
-          <Card className="hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+          <Card className="cyber-card border-0 cyber-fade-in" style={{ animationDelay: '0.1s' }}>
             <CardHeader className="text-center pb-4">
-              <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4 cyber-glow">
                 <Trophy className="w-8 h-8 text-white" />
               </div>
-              <CardTitle className="text-xl font-bold text-gray-900">Hackathons</CardTitle>
+              <CardTitle className="text-xl font-display font-medium text-white">Hackathons</CardTitle>
             </CardHeader>
             <CardContent className="text-center">
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 bg-gradient-to-r from-green-50 to-teal-50 rounded-lg">
-                  <div className="text-2xl font-bold text-green-600">3</div>
-                  <div className="text-sm text-gray-600">Participated</div>
+                <div className="cyber-card p-4 rounded-lg">
+                  <div className="text-2xl font-bold text-green-400 font-display">3</div>
+                  <div className="text-sm text-gray-400">Participated</div>
                 </div>
-                <div className="p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg">
-                  <div className="text-2xl font-bold text-purple-600">1</div>
-                  <div className="text-sm text-gray-600">Top 5 Finalist</div>
+                <div className="cyber-card p-4 rounded-lg">
+                  <div className="text-2xl font-bold text-purple-400 font-display">1</div>
+                  <div className="text-sm text-gray-400">Top 5 Finalist</div>
                 </div>
               </div>
             </CardContent>
           </Card>
 
           {/* Recognition */}
-          <Card className="hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+          <Card className="cyber-card border-0 cyber-fade-in" style={{ animationDelay: '0.2s' }}>
             <CardHeader className="text-center pb-4">
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4 cyber-glow">
                 <Award className="w-8 h-8 text-white" />
               </div>
-              <CardTitle className="text-xl font-bold text-gray-900">Recognition</CardTitle>
+              <CardTitle className="text-xl font-display font-medium text-white">Recognition</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div className="text-center p-4 bg-gradient-to-r from-orange-50 to-red-50 rounded-lg">
-                  <div className="text-lg font-semibold text-orange-600 mb-2">Academic Excellence</div>
-                  <div className="text-sm text-gray-700">Maintaining 8.07/10 CGPA in Electronics & Computer Engineering</div>
+                <div className="cyber-card p-4 rounded-lg text-center">
+                  <div className="text-lg font-semibold text-orange-400 mb-2 font-display">Academic Excellence</div>
+                  <div className="text-sm text-gray-300 cyber-text-body">Maintaining 8.07/10 CGPA in Electronics & Computer Engineering</div>
                 </div>
-                <div className="text-center p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg">
-                  <div className="text-lg font-semibold text-blue-600 mb-2">Leadership</div>
-                  <div className="text-sm text-gray-700">HR Lead at Club Radiance with successful event organization</div>
+                <div className="cyber-card p-4 rounded-lg text-center">
+                  <div className="text-lg font-semibold text-blue-400 mb-2 font-display">Leadership</div>
+                  <div className="text-sm text-gray-300 cyber-text-body">HR Lead at Club Radiance with successful event organization</div>
                 </div>
               </div>
             </CardContent>
@@ -123,31 +133,37 @@ const Achievements = () => {
 
         {/* Detailed Hackathons */}
         <div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Hackathon Details</h3>
+          <h3 className="text-4xl font-display cyber-heading cyber-text text-center mb-16">
+            Hackathon Details
+          </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {hackathons.map((hackathon, index) => (
-              <Card key={index} className="hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 overflow-hidden">
-                <div className={`h-2 bg-gradient-to-r ${hackathon.color}`}></div>
+              <Card 
+                key={index} 
+                className="cyber-card border-0 overflow-hidden cyber-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className={`h-1 bg-gradient-to-r ${hackathon.color}`}></div>
                 <CardHeader className="pb-4">
                   <div className="flex justify-between items-start mb-2">
-                    <CardTitle className="text-lg font-bold text-gray-900 leading-tight">
+                    <CardTitle className="text-lg font-medium text-white leading-tight font-display">
                       {hackathon.name}
                     </CardTitle>
                     <Badge 
                       variant="outline" 
-                      className={`bg-gradient-to-r ${hackathon.color} text-white border-0 whitespace-nowrap ml-2`}
+                      className={`cyber-card bg-gradient-to-r ${hackathon.color} text-white border-0 whitespace-nowrap ml-2 px-2 py-1 text-xs`}
                     >
                       {hackathon.type}
                     </Badge>
                   </div>
-                  <p className="text-sm text-gray-600 leading-relaxed">{hackathon.description}</p>
+                  <p className="text-sm text-gray-300 leading-relaxed cyber-text-body">{hackathon.description}</p>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
                     {hackathon.achievements.map((achievement, achIndex) => (
                       <div key={achIndex} className="flex items-start space-x-2">
                         <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${hackathon.color} mt-2 flex-shrink-0`}></div>
-                        <span className="text-xs text-gray-700">{achievement}</span>
+                        <span className="text-xs text-gray-300 cyber-text-body">{achievement}</span>
                       </div>
                     ))}
                   </div>

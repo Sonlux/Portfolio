@@ -243,21 +243,23 @@ const Projects = () => {
   };
 
   const handleDemoClick = (project: Project) => {
-    // Placeholder for demo functionality
     console.log(`Opening demo for ${project.title}`);
   };
 
   return (
-    <section id="projects" className="py-20 bg-slate-50">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+    <section id="projects" className="py-24 relative overflow-hidden">
+      {/* Cyberpunk background elements */}
+      <div className="cyber-bg absolute inset-0" />
+      <div className="cyber-grid absolute inset-0" />
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl font-display cyber-heading cyber-text mb-6">
             Featured Projects
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Innovative solutions spanning AI/ML, IoT, Cloud Computing, and
-            Real-time Systems
+          <div className="w-20 h-0.5 bg-gradient-to-r from-pink-500 to-cyan-500 mx-auto mb-8" />
+          <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
+            Innovative solutions spanning AI/ML, IoT, Cloud Computing, and Real-time Systems
           </p>
         </div>
 
@@ -265,38 +267,39 @@ const Projects = () => {
           {projects.map((project, index) => (
             <Card
               key={index}
-              className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-0 overflow-hidden"
+              className="cyber-card group border-0 cyber-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className={`h-2 bg-gradient-to-r ${project.gradient}`}></div>
+              <div className={`h-1 bg-gradient-to-r ${project.gradient}`}></div>
               <CardHeader className="pb-4">
                 <div className="flex justify-between items-start mb-2">
-                  <CardTitle className="text-lg font-bold text-gray-900 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300 leading-tight">
+                  <CardTitle className="text-lg font-display font-medium text-white group-hover:cyber-text transition-all duration-300 leading-tight">
                     {project.title}
                   </CardTitle>
                   <Badge
                     variant="outline"
-                    className={`bg-gradient-to-r ${project.gradient} text-white border-0 text-xs whitespace-nowrap ml-2`}
+                    className={`cyber-card px-3 py-1 text-xs whitespace-nowrap ml-2 text-gray-300 border-pink-500/30`}
                   >
                     {project.category}
                   </Badge>
                 </div>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-300 leading-relaxed cyber-text-body">
                   {expandedProject === index
                     ? project.fullDescription
                     : project.shortDescription}
                 </p>
                 {project.achievements && (
-                  <div className="text-sm font-medium text-green-600 mt-2">
+                  <div className="text-sm font-medium text-cyan-400 mt-2">
                     {project.achievements}
                   </div>
                 )}
               </CardHeader>
               <CardContent className="space-y-4">
                 {expandedProject === index && (
-                  <div className="space-y-3 animate-fade-in">
-                    <h4 className="font-semibold text-gray-900 flex items-center">
+                  <div className="space-y-3 cyber-fade-in">
+                    <h4 className="font-medium text-white flex items-center">
                       <div
-                        className={`w-3 h-3 rounded-full bg-gradient-to-r ${project.gradient} mr-2`}
+                        className={`w-3 h-3 rounded-full bg-gradient-to-r ${project.gradient} mr-2 cyber-glow`}
                       ></div>
                       Key Highlights
                     </h4>
@@ -305,7 +308,7 @@ const Projects = () => {
                         <div
                           className={`w-2 h-2 rounded-full bg-gradient-to-r ${project.gradient} mt-2 flex-shrink-0`}
                         ></div>
-                        <span className="text-sm text-gray-700">
+                        <span className="text-sm text-gray-300">
                           {highlight}
                         </span>
                       </div>
@@ -325,7 +328,7 @@ const Projects = () => {
                       <Badge
                         key={techIndex}
                         variant="secondary"
-                        className="bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors duration-200 text-xs"
+                        className="cyber-card bg-gray-800/50 text-gray-300 border-gray-700/50 hover:bg-gray-700/50 transition-colors duration-300 text-xs"
                       >
                         {tech}
                       </Badge>
@@ -333,7 +336,7 @@ const Projects = () => {
                   {!expandedProject && project.technologies.length > 4 && (
                     <Badge
                       variant="secondary"
-                      className="bg-gray-100 text-gray-500 text-xs"
+                      className="bg-gray-800/50 text-gray-400 text-xs border-gray-700/50"
                     >
                       +{project.technologies.length - 4} more
                     </Badge>
@@ -345,8 +348,7 @@ const Projects = () => {
                     {project.githubUrl ? (
                       <Button
                         size="sm"
-                        variant="outline"
-                        className="group-hover:border-blue-500 group-hover:text-blue-500 transition-colors duration-300"
+                        className="cyber-button text-gray-300 border-pink-500/50"
                         onClick={() => handleGithubClick(project.githubUrl)}
                       >
                         <Github className="w-4 h-4 mr-2" />
@@ -355,8 +357,7 @@ const Projects = () => {
                     ) : (
                       <Button
                         size="sm"
-                        variant="outline"
-                        className="opacity-50 cursor-not-allowed"
+                        className="opacity-50 cursor-not-allowed bg-gray-800/50 text-gray-500 border-gray-700/50"
                         disabled
                       >
                         <Github className="w-4 h-4 mr-2" />
@@ -372,7 +373,7 @@ const Projects = () => {
                       >
                         <Button
                           size="sm"
-                          className={`bg-gradient-to-r ${project.gradient} hover:opacity-90 text-white border-0`}
+                          className={`cyber-button bg-gradient-to-r ${project.gradient} hover:opacity-90 text-white border-0`}
                         >
                           <ExternalLink className="w-4 h-4 mr-2" />
                           Demo
@@ -381,7 +382,7 @@ const Projects = () => {
                     ) : project.hasDemo ? (
                       <Button
                         size="sm"
-                        className={`bg-gradient-to-r ${project.gradient} hover:opacity-90 text-white border-0`}
+                        className={`cyber-button bg-gradient-to-r ${project.gradient} hover:opacity-90 text-white border-0`}
                         disabled
                       >
                         <ExternalLink className="w-4 h-4 mr-2" />
@@ -394,7 +395,7 @@ const Projects = () => {
                     variant="ghost"
                     size="sm"
                     onClick={() => toggleExpand(index)}
-                    className="text-gray-500 hover:text-gray-700"
+                    className="text-gray-400 hover:text-cyan-400 hover:bg-gray-800/50 transition-all duration-300"
                   >
                     {expandedProject === index ? (
                       <>

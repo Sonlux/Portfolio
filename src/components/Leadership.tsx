@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -64,12 +63,18 @@ const Leadership = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Leadership & Volunteering</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+    <section className="py-24 relative overflow-hidden">
+      {/* Cyberpunk background elements */}
+      <div className="cyber-bg absolute inset-0" />
+      <div className="cyber-grid absolute inset-0" />
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl font-display cyber-heading cyber-text mb-6">
+            Leadership & Volunteering
+          </h2>
+          <div className="w-20 h-0.5 bg-gradient-to-r from-pink-500 to-cyan-500 mx-auto mb-8" />
+          <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
             Fostering collaboration, driving innovation, and creating positive impact through leadership and community engagement
           </p>
         </div>
@@ -77,11 +82,15 @@ const Leadership = () => {
         {/* Impact Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
           {volunteeringStats.map((stat, index) => (
-            <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300">
+            <Card 
+              key={index} 
+              className="cyber-card text-center border-0 cyber-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
               <CardContent className="p-6">
                 <div className="text-3xl mb-2">{stat.icon}</div>
-                <div className="text-2xl font-bold text-gray-900 mb-1">{stat.number}</div>
-                <div className="text-sm text-gray-600">{stat.label}</div>
+                <div className="text-2xl font-bold text-white mb-1 font-display">{stat.number}</div>
+                <div className="text-sm text-gray-400">{stat.label}</div>
               </CardContent>
             </Card>
           ))}
@@ -90,35 +99,42 @@ const Leadership = () => {
         {/* Leadership Roles */}
         <div className="space-y-8">
           {leadership.map((role, index) => (
-            <Card key={index} className="hover:shadow-xl transition-all duration-500 hover:-translate-y-1 border-l-4 border-l-transparent hover:border-l-blue-500">
+            <Card 
+              key={index} 
+              className="cyber-card border-0 cyber-fade-in"
+              style={{ animationDelay: `${index * 0.15}s` }}
+            >
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center space-x-4">
-                    <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${role.color} flex items-center justify-center`}>
+                    <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${role.color} flex items-center justify-center cyber-glow`}>
                       <role.icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <CardTitle className="text-xl font-bold text-gray-900">{role.title}</CardTitle>
-                      <div className="text-blue-600 font-medium">{role.organization}</div>
-                      <div className="text-sm text-gray-500">{role.period}</div>
+                      <CardTitle className="text-xl font-medium text-white font-display">{role.title}</CardTitle>
+                      <div className="text-cyan-400 font-medium">{role.organization}</div>
+                      <div className="text-sm text-gray-400">{role.period}</div>
                     </div>
                   </div>
-                  <Badge variant="outline" className={`bg-gradient-to-r ${role.color} text-white border-0 whitespace-nowrap`}>
+                  <Badge 
+                    variant="outline" 
+                    className={`cyber-card bg-gradient-to-r ${role.color} text-white border-0 whitespace-nowrap px-3 py-1`}
+                  >
                     {role.impact}
                   </Badge>
                 </div>
-                <p className="text-gray-600 leading-relaxed mt-4">{role.description}</p>
+                <p className="text-gray-300 leading-relaxed mt-4 cyber-text-body">{role.description}</p>
               </CardHeader>
               <CardContent>
-                <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
-                  <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${role.color} mr-2`}></div>
+                <h4 className="font-medium text-white mb-3 flex items-center">
+                  <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${role.color} mr-2 cyber-glow`}></div>
                   Key Achievements
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {role.achievements.map((achievement, achIndex) => (
                     <div key={achIndex} className="flex items-start space-x-2">
                       <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${role.color} mt-2 flex-shrink-0`}></div>
-                      <span className="text-sm text-gray-700">{achievement}</span>
+                      <span className="text-sm text-gray-300 cyber-text-body">{achievement}</span>
                     </div>
                   ))}
                 </div>
@@ -128,9 +144,9 @@ const Leadership = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="mt-16 text-center p-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Let's Collaborate</h3>
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+        <div className="mt-16 text-center cyber-card p-8 rounded-2xl cyber-fade-in" style={{ animationDelay: '0.5s' }}>
+          <h3 className="text-2xl font-bold text-white mb-4 font-display">Let's Collaborate</h3>
+          <p className="text-gray-300 mb-6 max-w-2xl mx-auto cyber-text-body">
             Passionate about creating positive impact through technology and leadership. 
             Open to collaboration opportunities in AI-for-good, smart cities, and student initiatives.
           </p>
