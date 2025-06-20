@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from "react";
 import {
   ChevronDown,
@@ -15,8 +16,7 @@ const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
-  const [glowX, setGlowX] = useState(50);
-  const [glowPos, setGlowPos] = useState({ x: 0, y: 0 });
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const roles = [
     "Full Stack Developer",
@@ -34,76 +34,34 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Mouse move handler for heading glow
+  // Enhanced mouse tracking for glow effects
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      if (!headingRef.current) return;
-      const rect = headingRef.current.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      setGlowX(Math.max(0, Math.min(100, x)));
+      setMousePos({ x: e.clientX, y: e.clientY });
     };
-    const heading = headingRef.current;
-    if (heading) {
-      heading.addEventListener("mousemove", handleMouseMove);
-      heading.addEventListener("mouseleave", () => setGlowX(50));
-    }
-    return () => {
-      if (heading) {
-        heading.removeEventListener("mousemove", handleMouseMove);
-        heading.removeEventListener("mouseleave", () => setGlowX(50));
-      }
-    };
+    
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // Mouse move handler for per-letter glow
-  useEffect(() => {
-    const heading = headingRef.current;
-    if (!heading) return;
-    const handleMove = (e: MouseEvent) => {
-      const rect = heading.getBoundingClientRect();
-      setGlowPos({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-      });
-    };
-    heading.addEventListener("mousemove", handleMove);
-    heading.addEventListener("mouseleave", () => setGlowPos({ x: 0, y: 0 }));
-    return () => {
-      heading.removeEventListener("mousemove", handleMove);
-      heading.removeEventListener("mouseleave", () =>
-        setGlowPos({ x: 0, y: 0 })
-      );
-    };
-  }, []);
-
-  // Helper to render glowing letters
-  const renderGlowingText = (text: string) => {
+  // Enhanced text glow effect
+  const renderEnhancedGlowingText = (text: string) => {
     return (
-      <span style={{ display: "inline-block", position: "relative" }}>
+      <span className="relative inline-block">
         {text.split("").map((char, i) => (
           <span
             key={i}
+            className="relative inline-block transition-all duration-300 hover:scale-110"
             style={{
-              display: "inline-block",
-              position: "relative",
-              transition: "text-shadow 0.15s",
-              textShadow:
-                glowPos.x && glowPos.y && headingRef.current
-                  ? (() => {
-                      const rect = headingRef.current!.getBoundingClientRect();
-                      const letterWidth = rect.width / text.length;
-                      const letterHeight = rect.height;
-                      const letterX = i * letterWidth + letterWidth / 2;
-                      const letterY = letterHeight / 2;
-                      const dx = glowPos.x - letterX;
-                      const dy = glowPos.y - letterY;
-                      const dist = Math.sqrt(dx * dx + dy * dy);
-                      const intensity = Math.max(0, 1 - dist / 180);
-                      return `0 0 ${32 + 48 * intensity}px rgba(56,189,248,${
-                        0.7 * intensity
-                      }), 0 0 ${80 * intensity}px #38bdf8`;
-                    })()
-                  : "0 0 32px #38bdf8",
+              textShadow: `
+                0 0 10px rgba(56, 189, 248, 0.8),
+                0 0 20px rgba(56, 189, 248, 0.6),
+                0 0 40px rgba(56, 189, 248, 0.4),
+                0 0 80px rgba(56, 189, 248, 0.2),
+                0 0 120px rgba(236, 72, 153, 0.1)
+              `,
+              animation: `glow-pulse 2s ease-in-out infinite`,
+              animationDelay: `${i * 0.1}s`,
             }}
           >
             {char === " " ? "\u00A0" : char}
@@ -118,33 +76,51 @@ const Hero = () => {
       ref={heroRef}
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
-      {/* Cyberpunk Background */}
+      {/* Enhanced Cyberpunk Background */}
       <div className="cyber-bg absolute inset-0" />
 
-      {/* Cyberpunk Grid */}
+      {/* Animated Grid */}
       <div className="cyber-grid absolute inset-0" />
 
-      {/* Static neon particles */}
+      {/* Enhanced floating particles with varied sizes and colors */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(15)].map((_, i) => (
+        {[...Array(20)].map((_, i) => (
           <div
             key={i}
-            className="cyber-particles absolute opacity-60"
+            className="cyber-particles absolute"
             style={{
-              left: `${10 + (i % 5) * 18}%`,
-              top: `${10 + Math.floor(i / 5) * 30}%`,
-              animation: "none",
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: `${4 + Math.random() * 4}s`,
             }}
           >
             <div
-              className="w-2 h-2 bg-gradient-to-r from-pink-400 to-cyan-400 rounded-full blur-sm"
+              className={`w-${Math.random() > 0.5 ? '2' : '1'} h-${Math.random() > 0.5 ? '2' : '1'} rounded-full blur-sm`}
               style={{
-                boxShadow: "0 0 10px currentColor",
+                background: `radial-gradient(circle, ${
+                  ['#ec4899', '#38bdf8', '#a78bfa'][Math.floor(Math.random() * 3)]
+                } 0%, transparent 70%)`,
+                boxShadow: `0 0 ${10 + Math.random() * 20}px currentColor`,
               }}
             />
           </div>
         ))}
       </div>
+
+      {/* Ambient light following cursor */}
+      <div
+        className="absolute pointer-events-none transition-all duration-1000 ease-out"
+        style={{
+          left: mousePos.x - 200,
+          top: mousePos.y - 200,
+          width: 400,
+          height: 400,
+          background: `radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, rgba(236, 72, 153, 0.05) 50%, transparent 70%)`,
+          borderRadius: '50%',
+          filter: 'blur(40px)',
+        }}
+      />
 
       <div className="container mx-auto px-6 text-center relative z-10">
         <div
@@ -152,13 +128,13 @@ const Hero = () => {
             isLoaded ? "cyber-fade-in visible" : "cyber-fade-in"
           }`}
         >
-          {/* Interactive per-letter glow heading */}
+          {/* Enhanced interactive heading with better glow */}
           <h1
             ref={headingRef}
-            className="text-6xl md:text-8xl font-display cyber-heading text-white mb-8 tracking-tight"
+            className="text-6xl md:text-8xl font-display cyber-heading text-white mb-8 tracking-tight relative"
             style={{ userSelect: "none" }}
           >
-            {renderGlowingText("Hello, I'm Lakshan")}
+            {renderEnhancedGlowingText("Hello, I'm Lakshan")}
           </h1>
 
           {/* Enhanced role display */}
@@ -167,6 +143,11 @@ const Hero = () => {
             <span
               key={currentRole}
               className="cyber-card transition-all duration-700 px-6 py-2 rounded-full font-medium text-white"
+              style={{
+                background: `linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%)`,
+                border: '1px solid rgba(56, 189, 248, 0.3)',
+                boxShadow: '0 0 20px rgba(56, 189, 248, 0.2)',
+              }}
             >
               {roles[currentRole]}
             </span>
@@ -191,7 +172,7 @@ const Hero = () => {
             </span>
           </div>
 
-          {/* Cyberpunk action buttons */}
+          {/* Enhanced action buttons */}
           <div className="flex flex-wrap justify-center gap-4 mb-16">
             <Button
               variant="outline"
@@ -209,7 +190,12 @@ const Hero = () => {
 
             <Button
               size="lg"
-              className="cyber-button bg-gradient-to-r from-pink-600 to-cyan-600 hover:from-pink-500 hover:to-cyan-500 text-white border-0 px-8 py-3 font-medium"
+              className="cyber-button px-8 py-3 font-medium"
+              style={{
+                background: `linear-gradient(135deg, rgba(236, 72, 153, 0.8) 0%, rgba(56, 189, 248, 0.8) 100%)`,
+                border: '1px solid rgba(56, 189, 248, 0.5)',
+                boxShadow: '0 0 20px rgba(236, 72, 153, 0.3)',
+              }}
               onClick={() => {
                 const link = document.createElement("a");
                 link.href = "/resume.pdf";
@@ -266,6 +252,8 @@ const Hero = () => {
                 className={`cyber-card group p-4 rounded-full ${social.color} hover:text-white transition-all duration-500 cyber-glow`}
                 style={{
                   animationDelay: `${index * 0.1}s`,
+                  background: `rgba(24, 24, 27, 0.6)`,
+                  backdropFilter: 'blur(10px)',
                 }}
                 aria-label={social.label}
               >
@@ -276,7 +264,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Cyberpunk scroll indicator */}
+      {/* Enhanced scroll indicator */}
       <div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer group"
         onClick={() =>
@@ -289,6 +277,24 @@ const Hero = () => {
           <ChevronDown size={24} className="animate-bounce" />
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes glow-pulse {
+          0%, 100% {
+            text-shadow: 
+              0 0 10px rgba(56, 189, 248, 0.8),
+              0 0 20px rgba(56, 189, 248, 0.6),
+              0 0 40px rgba(56, 189, 248, 0.4);
+          }
+          50% {
+            text-shadow: 
+              0 0 20px rgba(56, 189, 248, 1),
+              0 0 30px rgba(56, 189, 248, 0.8),
+              0 0 60px rgba(56, 189, 248, 0.6),
+              0 0 100px rgba(236, 72, 153, 0.3);
+          }
+        }
+      `}</style>
     </section>
   );
 };
