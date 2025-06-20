@@ -34,10 +34,17 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Enhanced mouse tracking for glow effects
+  // Throttled mouse tracking for better performance
   useEffect(() => {
+    let ticking = false;
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setMousePos({ x: e.clientX, y: e.clientY });
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     
     window.addEventListener("mousemove", handleMouseMove);
@@ -82,9 +89,9 @@ const Hero = () => {
       {/* Animated Grid */}
       <div className="cyber-grid absolute inset-0" />
 
-      {/* Enhanced floating particles with varied sizes and colors */}
+      {/* Reduced floating particles for better performance */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(10)].map((_, i) => (
           <div
             key={i}
             className="cyber-particles absolute"
@@ -108,9 +115,9 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Ambient light following cursor */}
+      {/* Optimized ambient light following cursor */}
       <div
-        className="absolute pointer-events-none transition-all duration-1000 ease-out"
+        className="absolute pointer-events-none transition-all duration-500 ease-out will-change-transform"
         style={{
           left: mousePos.x - 200,
           top: mousePos.y - 200,
@@ -119,6 +126,7 @@ const Hero = () => {
           background: `radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, rgba(236, 72, 153, 0.05) 50%, transparent 70%)`,
           borderRadius: '50%',
           filter: 'blur(40px)',
+          transform: 'translate3d(0, 0, 0)', // Hardware acceleration
         }}
       />
 
@@ -278,7 +286,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes glow-pulse {
           0%, 100% {
             text-shadow: 
