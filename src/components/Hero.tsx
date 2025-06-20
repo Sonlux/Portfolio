@@ -34,41 +34,47 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Throttled mouse tracking for better performance
+  // More aggressive throttling for better performance
   useEffect(() => {
     let ticking = false;
+    let lastUpdate = 0;
+    const throttleDelay = 50; // Increased throttle delay
+    
     const handleMouseMove = (e: MouseEvent) => {
+      const now = Date.now();
+      if (now - lastUpdate < throttleDelay) return;
+      
       if (!ticking) {
         requestAnimationFrame(() => {
           setMousePos({ x: e.clientX, y: e.clientY });
+          lastUpdate = now;
           ticking = false;
         });
         ticking = true;
       }
     };
     
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // Enhanced text glow effect
+  // Optimized text glow effect
   const renderEnhancedGlowingText = (text: string) => {
     return (
       <span className="relative inline-block">
         {text.split("").map((char, i) => (
           <span
             key={i}
-            className="relative inline-block transition-all duration-300 hover:scale-110"
+            className="relative inline-block transition-transform duration-200 hover:scale-105"
             style={{
               textShadow: `
-                0 0 10px rgba(56, 189, 248, 0.8),
-                0 0 20px rgba(56, 189, 248, 0.6),
-                0 0 40px rgba(56, 189, 248, 0.4),
-                0 0 80px rgba(56, 189, 248, 0.2),
-                0 0 120px rgba(236, 72, 153, 0.1)
+                0 0 8px rgba(56, 189, 248, 0.6),
+                0 0 16px rgba(56, 189, 248, 0.4),
+                0 0 32px rgba(56, 189, 248, 0.2),
+                0 0 64px rgba(236, 72, 153, 0.1)
               `,
-              animation: `glow-pulse 2s ease-in-out infinite`,
-              animationDelay: `${i * 0.1}s`,
+              animation: `glow-pulse 3s ease-in-out infinite`,
+              animationDelay: `${i * 0.05}s`,
             }}
           >
             {char === " " ? "\u00A0" : char}
@@ -91,15 +97,15 @@ const Hero = () => {
 
       {/* Reduced floating particles for better performance */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(10)].map((_, i) => (
+        {[...Array(6)].map((_, i) => (
           <div
             key={i}
             className="cyber-particles absolute"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              animationDelay: `${i * 0.5}s`,
-              animationDuration: `${4 + Math.random() * 4}s`,
+              animationDelay: `${i * 0.8}s`,
+              animationDuration: `${6 + Math.random() * 6}s`,
             }}
           >
             <div
@@ -108,7 +114,7 @@ const Hero = () => {
                 background: `radial-gradient(circle, ${
                   ['#ec4899', '#38bdf8', '#a78bfa'][Math.floor(Math.random() * 3)]
                 } 0%, transparent 70%)`,
-                boxShadow: `0 0 ${10 + Math.random() * 20}px currentColor`,
+                boxShadow: `0 0 ${8 + Math.random() * 12}px currentColor`,
               }}
             />
           </div>
@@ -117,26 +123,26 @@ const Hero = () => {
 
       {/* Optimized ambient light following cursor */}
       <div
-        className="absolute pointer-events-none transition-all duration-500 ease-out will-change-transform"
+        className="absolute pointer-events-none transition-all duration-700 ease-out"
         style={{
-          left: mousePos.x - 200,
-          top: mousePos.y - 200,
-          width: 400,
-          height: 400,
-          background: `radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, rgba(236, 72, 153, 0.05) 50%, transparent 70%)`,
+          left: mousePos.x - 150,
+          top: mousePos.y - 150,
+          width: 300,
+          height: 300,
+          background: `radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(236, 72, 153, 0.04) 50%, transparent 70%)`,
           borderRadius: '50%',
-          filter: 'blur(40px)',
-          transform: 'translate3d(0, 0, 0)', // Hardware acceleration
+          filter: 'blur(30px)',
+          transform: 'translate3d(0, 0, 0)',
         }}
       />
 
       <div className="container mx-auto px-6 text-center relative z-10">
         <div
-          className={`transition-all duration-1000 ${
+          className={`transition-all duration-800 ${
             isLoaded ? "cyber-fade-in visible" : "cyber-fade-in"
           }`}
         >
-          {/* Enhanced interactive heading with better glow */}
+          {/* Enhanced interactive heading with optimized glow */}
           <h1
             ref={headingRef}
             className="text-6xl md:text-8xl font-display cyber-heading text-white mb-8 tracking-tight relative"
@@ -150,11 +156,11 @@ const Hero = () => {
             <Code2 className="w-5 h-5 mr-3 text-pink-400" />
             <span
               key={currentRole}
-              className="cyber-card transition-all duration-700 px-6 py-2 rounded-full font-medium text-white"
+              className="cyber-card transition-all duration-500 px-6 py-2 rounded-full font-medium text-white"
               style={{
                 background: `linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%)`,
                 border: '1px solid rgba(56, 189, 248, 0.3)',
-                boxShadow: '0 0 20px rgba(56, 189, 248, 0.2)',
+                boxShadow: '0 0 15px rgba(56, 189, 248, 0.15)',
               }}
             >
               {roles[currentRole]}
@@ -202,7 +208,7 @@ const Hero = () => {
               style={{
                 background: `linear-gradient(135deg, rgba(236, 72, 153, 0.8) 0%, rgba(56, 189, 248, 0.8) 100%)`,
                 border: '1px solid rgba(56, 189, 248, 0.5)',
-                boxShadow: '0 0 20px rgba(236, 72, 153, 0.3)',
+                boxShadow: '0 0 15px rgba(236, 72, 153, 0.2)',
               }}
               onClick={() => {
                 const link = document.createElement("a");
@@ -257,7 +263,7 @@ const Hero = () => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`cyber-card group p-4 rounded-full ${social.color} hover:text-white transition-all duration-500 cyber-glow`}
+                className={`cyber-card group p-4 rounded-full ${social.color} hover:text-white transition-all duration-300 cyber-glow`}
                 style={{
                   animationDelay: `${index * 0.1}s`,
                   background: `rgba(24, 24, 27, 0.6)`,
@@ -281,7 +287,7 @@ const Hero = () => {
             ?.scrollIntoView({ behavior: "smooth" })
         }
       >
-        <div className="cyber-card p-3 rounded-full text-gray-400 group-hover:text-cyan-400 transition-all duration-500">
+        <div className="cyber-card p-3 rounded-full text-gray-400 group-hover:text-cyan-400 transition-all duration-300">
           <ChevronDown size={24} className="animate-bounce" />
         </div>
       </div>
@@ -290,16 +296,16 @@ const Hero = () => {
         @keyframes glow-pulse {
           0%, 100% {
             text-shadow: 
-              0 0 10px rgba(56, 189, 248, 0.8),
-              0 0 20px rgba(56, 189, 248, 0.6),
-              0 0 40px rgba(56, 189, 248, 0.4);
+              0 0 8px rgba(56, 189, 248, 0.6),
+              0 0 16px rgba(56, 189, 248, 0.4),
+              0 0 32px rgba(56, 189, 248, 0.2);
           }
           50% {
             text-shadow: 
-              0 0 20px rgba(56, 189, 248, 1),
-              0 0 30px rgba(56, 189, 248, 0.8),
-              0 0 60px rgba(56, 189, 248, 0.6),
-              0 0 100px rgba(236, 72, 153, 0.3);
+              0 0 12px rgba(56, 189, 248, 0.8),
+              0 0 24px rgba(56, 189, 248, 0.6),
+              0 0 48px rgba(56, 189, 248, 0.4),
+              0 0 80px rgba(236, 72, 153, 0.2);
           }
         }
       `}</style>
