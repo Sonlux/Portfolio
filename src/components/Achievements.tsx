@@ -219,7 +219,7 @@ const Achievements = () => {
                     Academic Excellence
                   </div>
                   <div className="text-sm text-gray-300 cyber-text-body">
-                    Maintaining 8.07/10 CGPA in Electronics & Computer
+                    Maintaining 8.175/10 CGPA in Electronics & Computer
                     Engineering
                   </div>
                 </div>
