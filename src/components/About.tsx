@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Zap, Target, Rocket, Brain, Code2, Award } from "lucide-react";
@@ -11,7 +12,7 @@ const About = () => {
   const stats = useMemo(
     () => [
       {
-        value: "8.07",
+        value: "8.175",
         label: "CGPA",
         description: "Academic Excellence",
         icon: Brain,

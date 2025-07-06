@@ -55,7 +55,7 @@ const Experience = () => {
         degree: "Bachelor of Technology in Electronics & Computer Engineering",
         institution: "SRM Institute of Science & Technology",
         period: "09.2022 - Current",
-        cgpa: "8.07 / 10",
+        cgpa: "8.175 / 10",
         color: "from-orange-500 to-red-500",
       },
       {
