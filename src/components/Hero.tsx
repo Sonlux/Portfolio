@@ -58,23 +58,21 @@ const Hero = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // Optimized text glow effect
-  const renderEnhancedGlowingText = (text: string) => {
+  // Clean, refined text without excessive glow
+  const renderEnhancedText = (text: string) => {
     return (
       <span className="relative inline-block">
         {text.split("").map((char, i) => (
           <span
             key={i}
-            className="relative inline-block transition-transform duration-200 hover:scale-105"
+            className="relative inline-block transition-all duration-300"
             style={{
               textShadow: `
-                0 0 8px rgba(56, 189, 248, 0.6),
-                0 0 16px rgba(56, 189, 248, 0.4),
-                0 0 32px rgba(56, 189, 248, 0.2),
-                0 0 64px rgba(236, 72, 153, 0.1)
+                0 1px 2px rgba(0, 0, 0, 0.1),
+                0 0 8px rgba(56, 189, 248, 0.1)
               `,
-              animation: `glow-pulse 3s ease-in-out infinite`,
-              animationDelay: `${i * 0.05}s`,
+              animation: `subtle-glow 4s ease-in-out infinite`,
+              animationDelay: `${i * 0.03}s`,
             }}
           >
             {char === " " ? "\u00A0" : char}
@@ -136,7 +134,7 @@ const Hero = () => {
             className="text-6xl md:text-8xl font-display cyber-heading text-white mb-8 tracking-tight relative"
             style={{ userSelect: "none" }}
           >
-            {renderEnhancedGlowingText("Hello, I'm Lakshan")}
+            {renderEnhancedText("Hello, I'm Lakshan")}
           </h1>
 
           {/* Enhanced role display */}
@@ -281,19 +279,17 @@ const Hero = () => {
       </div>
 
       <style>{`
-        @keyframes glow-pulse {
+        @keyframes subtle-glow {
           0%, 100% {
             text-shadow: 
-              0 0 8px rgba(56, 189, 248, 0.6),
-              0 0 16px rgba(56, 189, 248, 0.4),
-              0 0 32px rgba(56, 189, 248, 0.2);
+              0 1px 2px rgba(0, 0, 0, 0.1),
+              0 0 6px rgba(56, 189, 248, 0.08);
           }
           50% {
             text-shadow: 
-              0 0 12px rgba(56, 189, 248, 0.8),
-              0 0 24px rgba(56, 189, 248, 0.6),
-              0 0 48px rgba(56, 189, 248, 0.4),
-              0 0 80px rgba(236, 72, 153, 0.2);
+              0 1px 2px rgba(0, 0, 0, 0.1),
+              0 0 12px rgba(56, 189, 248, 0.12),
+              0 0 24px rgba(236, 72, 153, 0.04);
           }
         }
       `}</style>
