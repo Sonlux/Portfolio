@@ -32,9 +32,10 @@
   body {
     font-family: "Inter", sans-serif;
     overflow-x: hidden;
-    background: radial-gradient(ellipse at center, #0f0f23 0%, #000000 70%);
+    background: linear-gradient(180deg, #000000 0%, #0a0a0a 25%, #111111 50%, #0a0a0a 75%, #000000 100%);
     color: #fff;
-    transition: background 0.8s ease, color 0.8s ease;
+    scroll-behavior: smooth;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   html {
@@ -58,64 +59,37 @@
   }
 }
 
-/* Enhanced Background Effects - Optimized for performance */
+/* Apple-style Background Effects */
 .cyber-bg {
   background: 
-    radial-gradient(circle at 20% 80%, rgba(236, 72, 153, 0.06) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.06) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(168, 85, 247, 0.03) 0%, transparent 50%),
-    linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
-  animation: bg-shift 40s ease-in-out infinite;
-  transform: translate3d(0, 0, 0);
+    radial-gradient(ellipse at top, rgba(255,255,255,0.02) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(120,119,198,0.05) 0%, transparent 50%);
+  background-attachment: fixed;
 }
 
-@keyframes bg-shift {
-  0%, 100% { 
-    background: 
-      radial-gradient(circle at 20% 80%, rgba(236, 72, 153, 0.06) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.06) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(168, 85, 247, 0.03) 0%, transparent 50%),
-      linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
-  }
-  50% { 
-    background: 
-      radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 60% 60%, rgba(168, 85, 247, 0.04) 0%, transparent 50%),
-      linear-gradient(135deg, #000000 0%, #0f0f23 100%);
-  }
-}
-
-/* Optimized Animated Grid Background */
+/* Subtle grid for depth */
 .cyber-grid {
   background-image: 
-    linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
-  background-size: 120px 120px;
-  animation: grid-move 60s linear infinite;
-  opacity: 0.15;
-  transform: translate3d(0, 0, 0);
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.3;
 }
 
-@keyframes grid-move {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(120px, 120px, 0); }
-}
-
-/* Optimized Floating Particles */
+/* Apple-style subtle animations */
 .cyber-particles {
-  animation: float 12s ease-in-out infinite;
+  animation: float 6s ease-in-out infinite;
   transform: translate3d(0, 0, 0);
 }
 
 @keyframes float {
   0%, 100% { 
-    transform: translate3d(0, 0px, 0) rotate(0deg);
-    opacity: 0.2;
+    transform: translateY(0px); 
+    opacity: 0.4;
   }
   50% { 
-    transform: translate3d(0, -15px, 0) rotate(90deg);
-    opacity: 0.4;
+    transform: translateY(-10px); 
+    opacity: 0.6;
   }
 }
 
@@ -177,47 +151,46 @@
   transform: translate3d(0, 0, 0);
 }
 
-/* Card Styles - Optimized */
+/* Apple-style Cards */
 .cyber-card {
-  background: rgba(24, 24, 27, 0.8);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 1rem;
-  border: 1.5px solid #23272f;
-  box-shadow: 0 4px 32px 0 rgba(0, 0, 0, 0.32);
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  transform: translate3d(0, 0, 0);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
 }
 .cyber-card:hover {
-  box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.48), 0 0 0 2px #38bdf8;
-  border-color: #38bdf8;
-  transform: translate3d(0, -2px, 0);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
-/* Button Styles - Optimized */
+/* Apple-style Button Styles */
 .cyber-button {
-  background: rgba(35, 39, 47, 0.9) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
   color: #fff !important;
-  border-radius: 0.5rem !important;
-  border: 1.5px solid #38bdf8 !important;
-  font-weight: 700 !important;
-  font-size: 1.1rem !important;
+  border-radius: 0.75rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
   min-width: 180px;
   justify-content: center;
   align-items: center;
   display: flex;
-  backdrop-filter: blur(10px);
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(20px);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   transform: translate3d(0, 0, 0);
 }
 .cyber-button:hover,
 .cyber-button.active {
-  background: rgba(56, 189, 248, 0.2) !important;
-  color: #38bdf8 !important;
-  border: 1.5px solid #38bdf8 !important;
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
-  transform: translate3d(0, -1px, 0);
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transform: translate3d(0, -2px, 0);
 }
 
 /* Badge Styles */

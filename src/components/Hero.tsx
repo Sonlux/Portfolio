@@ -89,35 +89,23 @@ const Hero = () => {
       ref={heroRef}
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
-      {/* Enhanced Cyberpunk Background */}
+      {/* Apple-style Background */}
       <div className="cyber-bg absolute inset-0" />
-
-      {/* Animated Grid */}
       <div className="cyber-grid absolute inset-0" />
 
-      {/* Reduced floating particles for better performance */}
+      {/* Subtle floating elements */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(6)].map((_, i) => (
+        {[...Array(4)].map((_, i) => (
           <div
             key={i}
-            className="cyber-particles absolute"
+            className="cyber-particles absolute w-1 h-1 bg-white/10 rounded-full"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${i * 0.8}s`,
-              animationDuration: `${6 + Math.random() * 6}s`,
+              left: `${20 + Math.random() * 60}%`,
+              top: `${20 + Math.random() * 60}%`,
+              animationDelay: `${i * 1.5}s`,
+              animationDuration: `${8 + Math.random() * 4}s`,
             }}
-          >
-            <div
-              className={`w-${Math.random() > 0.5 ? '2' : '1'} h-${Math.random() > 0.5 ? '2' : '1'} rounded-full blur-sm`}
-              style={{
-                background: `radial-gradient(circle, ${
-                  ['#ec4899', '#38bdf8', '#a78bfa'][Math.floor(Math.random() * 3)]
-                } 0%, transparent 70%)`,
-                boxShadow: `0 0 ${8 + Math.random() * 12}px currentColor`,
-              }}
-            />
-          </div>
+          />
         ))}
       </div>
 
