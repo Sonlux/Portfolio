@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
 import {
   ChevronDown,
   Github,
@@ -83,29 +84,46 @@ const Hero = () => {
   };
 
   return (
-    <section
+    <motion.section
       ref={heroRef}
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.2, ease: "easeOut" }}
     >
       {/* Apple-style Background */}
       <div className="cyber-bg absolute inset-0" />
       <div className="cyber-grid absolute inset-0" />
 
       {/* Subtle floating elements */}
-      <div className="absolute inset-0 pointer-events-none">
+      <motion.div 
+        className="absolute inset-0 pointer-events-none"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 1 }}
+      >
         {[...Array(4)].map((_, i) => (
-          <div
+          <motion.div
             key={i}
             className="cyber-particles absolute w-1 h-1 bg-white/10 rounded-full"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ 
+              opacity: [0.4, 0.6, 0.4], 
+              y: [0, -10, 0] 
+            }}
+            transition={{
+              duration: 8 + Math.random() * 4,
+              repeat: Infinity,
+              delay: i * 1.5,
+              ease: "easeInOut"
+            }}
             style={{
               left: `${20 + Math.random() * 60}%`,
               top: `${20 + Math.random() * 60}%`,
-              animationDelay: `${i * 1.5}s`,
-              animationDuration: `${8 + Math.random() * 4}s`,
             }}
           />
         ))}
-      </div>
+      </motion.div>
 
       {/* Optimized ambient light following cursor */}
       <div
@@ -123,26 +141,44 @@ const Hero = () => {
       />
 
       <div className="container mx-auto px-6 text-center relative z-10">
-        <div
-          className={`transition-all duration-800 ${
-            isLoaded ? "cyber-fade-in visible" : "cyber-fade-in"
-          }`}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
           {/* Enhanced interactive heading with optimized glow */}
-          <h1
+          <motion.h1
             ref={headingRef}
             className="text-6xl md:text-8xl font-display cyber-heading text-white mb-8 tracking-tight relative"
             style={{ userSelect: "none" }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
           >
             {renderEnhancedText("Hello, I'm Lakshan")}
-          </h1>
+          </motion.h1>
 
           {/* Enhanced role display */}
-          <div className="text-xl md:text-3xl text-gray-300 mb-6 font-light h-10 flex items-center justify-center">
-            <Code2 className="w-5 h-5 mr-3 text-pink-400" />
-            <span
+          <motion.div 
+            className="text-xl md:text-3xl text-gray-300 mb-6 font-light h-10 flex items-center justify-center"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+          >
+            <motion.div
+              className="w-5 h-5 mr-3 text-pink-400"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            >
+              <Code2 className="w-5 h-5" />
+            </motion.div>
+            <motion.span
               key={currentRole}
               className="cyber-card transition-all duration-500 px-6 py-2 rounded-full font-medium text-white"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
               style={{
                 background: `linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%)`,
                 border: '1px solid rgba(56, 189, 248, 0.3)',
@@ -150,11 +186,22 @@ const Hero = () => {
               }}
             >
               {roles[currentRole]}
-            </span>
-            <Zap className="w-5 h-5 ml-3 text-cyan-400" />
-          </div>
+            </motion.span>
+            <motion.div
+              className="w-5 h-5 ml-3 text-cyan-400"
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Zap className="w-5 h-5" />
+            </motion.div>
+          </motion.div>
 
-          <div className="text-lg text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed font-light cyber-text-body">
+          <motion.div 
+            className="text-lg text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed font-light cyber-text-body"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+          >
             <span className="cyber-slide-in visible">
               Passionate about creating innovative solutions through{" "}
               <span className="text-pink-400 font-medium">
@@ -170,11 +217,17 @@ const Hero = () => {
               </span>
               . Transforming ideas into scalable, impactful applications.
             </span>
-          </div>
+          </motion.div>
 
           {/* Enhanced action buttons */}
-          <div className="flex flex-wrap justify-center gap-4 mb-16">
-            <Button
+          <motion.div 
+            className="flex flex-wrap justify-center gap-4 mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
+          >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
               variant="outline"
               size="lg"
               className="cyber-button px-8 py-3 font-medium border-pink-500/50 hover:border-cyan-400"
@@ -186,9 +239,11 @@ const Hero = () => {
             >
               <Zap className="w-4 h-4 mr-2" />
               View My Work
-            </Button>
+              </Button>
+            </motion.div>
 
-            <Button
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
               size="lg"
               className="cyber-button px-8 py-3 font-medium"
               style={{
@@ -205,9 +260,11 @@ const Hero = () => {
             >
               <Download className="w-4 h-4 mr-2" />
               Download CV
-            </Button>
+              </Button>
+            </motion.div>
 
-            <Button
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
               size="lg"
               variant="outline"
               className="cyber-button px-8 py-3 font-medium border-purple-500/50 hover:border-pink-400"
@@ -219,11 +276,17 @@ const Hero = () => {
             >
               <Mail className="w-4 h-4 mr-2" />
               Get In Touch
-            </Button>
-          </div>
+              </Button>
+            </motion.div>
+          </motion.div>
 
           {/* Enhanced social links */}
-          <div className="flex justify-center space-x-8 mb-16">
+          <motion.div 
+            className="flex justify-center space-x-8 mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
+          >
             {[
               {
                 icon: Mail,
@@ -244,7 +307,7 @@ const Hero = () => {
                 color: "text-purple-400",
               },
             ].map((social, index) => (
-              <a
+              <motion.a
                 key={index}
                 href={social.href}
                 target="_blank"
@@ -256,27 +319,36 @@ const Hero = () => {
                   backdropFilter: 'blur(10px)',
                 }}
                 aria-label={social.label}
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.4 + index * 0.1, duration: 0.5 }}
               >
                 <social.icon size={24} />
-              </a>
+              </motion.a>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* Enhanced scroll indicator */}
-      <div
+      <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer group"
         onClick={() =>
           document
             .getElementById("about")
             ?.scrollIntoView({ behavior: "smooth" })
         }
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.6, duration: 0.8 }}
+        whileHover={{ scale: 1.1 }}
       >
         <div className="cyber-card p-3 rounded-full text-gray-400 group-hover:text-cyan-400 transition-all duration-300">
           <ChevronDown size={24} className="animate-bounce" />
         </div>
-      </div>
+      </motion.div>
 
       <style>{`
         @keyframes subtle-glow {
@@ -293,7 +365,7 @@ const Hero = () => {
           }
         }
       `}</style>
-    </section>
+    </motion.section>
   );
 };
 
