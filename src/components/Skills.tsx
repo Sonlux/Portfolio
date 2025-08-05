@@ -92,11 +92,7 @@ const Skills = () => {
 
   return (
     <section className="py-24 relative overflow-hidden">
-      {/* Cyberpunk background elements */}
-      <div className="cyber-bg absolute inset-0" />
-      <div className="cyber-grid absolute inset-0" />
-
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="section-container">
         <div className="text-center mb-20">
           <h2 
             ref={titleRef}
